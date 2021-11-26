@@ -19,7 +19,7 @@ PRs welcome
 
 Overview:
  1. checkout this project
- 2. checkout (modified hydrogen web)[https://github.com/thigg/hydrogen-web/tree/sfos]
+ 2. checkout [modified hydrogen web](https://github.com/thigg/hydrogen-web/tree/sfos)
  3. build hydrogen web
  4. link hydrogen build artifacts into this project
  5. build this project
