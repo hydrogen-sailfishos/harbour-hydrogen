@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 17.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   version="1.1"
+   x="0px"
+   y="0px"
+   width="86px"
+   height="86px"
+   viewBox="0 0 86 86"
+   enable-background="new 0 0 86 86"
+   xml:space="preserve"
+   id="svg21"
+   sodipodi:docname="sfos-hydrogen.svg"
+   inkscape:export-filename="/home/thilo/git/private/harbour-hydrogen/icons/172x172/harbour-hydrogen.png"
+   inkscape:export-xdpi="192"
+   inkscape:export-ydpi="192"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs25" /><sodipodi:namedview
+   id="namedview23"
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1.0"
+   inkscape:pageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   showgrid="true"
+   inkscape:zoom="3.6377198"
+   inkscape:cx="71.885691"
+   inkscape:cy="42.884007"
+   inkscape:window-width="1914"
+   inkscape:window-height="1025"
+   inkscape:window-x="0"
+   inkscape:window-y="24"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="layer1"><inkscape:grid
+     type="xygrid"
+     id="grid17594" /></sodipodi:namedview>
+<g
+   id="Layer_2"
+   display="none">
+</g>
+<g
+   id="Layer_1">
+	<linearGradient
+   id="SVGID_1_"
+   gradientUnits="userSpaceOnUse"
+   x1="0.7169"
+   y1="85.2831"
+   x2="85.2831"
+   y2="0.7169">
+		<stop
+   offset="0"
+   style="stop-color:#EB424A"
+   id="stop3" />
+		<stop
+   offset="1"
+   style="stop-color:#FF7500"
+   id="stop5" />
+	</linearGradient>
+	<path
+   fill="url(#SVGID_1_)"
+   d="M84.277,0.3H43C19.417,0.3,0.3,19.418,0.3,43v41.277c0,0.786,0.637,1.423,1.423,1.423H43   c23.583,0,42.7-19.118,42.7-42.7V1.723C85.7,0.937,85.063,0.3,84.277,0.3z"
+   id="path8"
+   style="fill:#0dbd8b;fill-opacity:1" />
+	
+	
+	
+	
+</g><g
+   inkscape:groupmode="layer"
+   id="layer1"
+   inkscape:label="logo"
+   style="display:inline"><g
+     style="fill:none"
+     id="g11943"
+     transform="matrix(0.17904807,0,0,0.17904807,7.0609673,8.814922)"><g
+       id="g17592"
+       transform="matrix(1.254103,0,0,1.254103,-38.812898,-51.779408)"><path
+         fill-rule="evenodd"
+         clip-rule="evenodd"
+         d="M 64.1212,192 C 64.1212,121.375 121.375,64.1212 192,64.1212 c 27.695,0 53.333,8.8037 74.269,23.7652 -1.938,4.2199 -3.019,8.9154 -3.019,13.8636 0,18.363 14.886,33.25 33.25,33.25 3.24,0 6.371,-0.464 9.332,-1.328 8.979,17.489 14.047,37.317 14.047,58.328 0,70.626 -57.253,127.879 -127.879,127.879 C 121.375,319.879 64.1212,262.626 64.1212,192 Z M 320.589,124.669 c 10.559,20.123 16.532,43.029 16.532,67.331 0,80.148 -64.973,145.121 -145.121,145.121 C 111.852,337.121 46.8792,272.148 46.8792,192 46.8792,111.852 111.852,46.8792 192,46.8792 c 31.884,0 61.367,10.2823 85.313,27.712 5.42,-3.8368 12.04,-6.0914 19.187,-6.0914 18.363,0 33.25,14.8865 33.25,33.2502 0,8.884 -3.484,16.954 -9.161,22.919 z"
+         fill="#ffffff"
+         id="path11929" /><circle
+         cx="192"
+         cy="192"
+         r="85.5"
+         fill="#ffffff"
+         id="circle11931" /></g></g></g>
+</svg>

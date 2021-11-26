@@ -1,0 +1,11 @@
+
+# Alternatively, if your changelog is automatically generated (e.g. with
+# the git-change-log command provided with Sailfish OS SDK), create a
+# harbour-hydrogen.changes.run script to let mb2 run the required commands for you.
+
+# * date Author's Name <author's email> version-release
+# - Summary of changes
+
+* Fri Nov 26 2021 thigg <nomail@example.com> 0.1
+- Proof of concept that it works
+
