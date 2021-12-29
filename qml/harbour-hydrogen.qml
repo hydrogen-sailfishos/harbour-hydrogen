@@ -1,12 +1,17 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import Sailfish.WebView 1.0
+import Sailfish.WebEngine 1.0
 
 ApplicationWindow {
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
 
     initialPage: WebViewPage {
+	Component.onCompleted: {
+		WebEngineSettings.setPreference("security.disable_cors_checks", true, WebEngineSettings.BoolPref)
+	}
+
         WebView {
             id: webview
             anchors.fill: parent
