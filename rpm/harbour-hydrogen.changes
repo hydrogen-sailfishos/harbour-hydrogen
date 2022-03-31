@@ -5,7 +5,8 @@
 
 # * date Author's Name <author's email> version-release
 # - Summary of changes
-
-* Fri Nov 26 2021 thigg <nomail@example.com> 0.1
+* Thu Mar 31 2022 thigg  0.2
+- compatible to sfos 4.4, compiled for FF78, logging forwarded
+* Fri Nov 26 2021 thigg  0.1
 - Proof of concept that it works
 

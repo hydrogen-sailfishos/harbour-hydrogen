@@ -9,7 +9,7 @@ Name:       harbour-hydrogen
 # << macros
 
 Summary:    hydrogen, a matrix client
-Version:    0.1
+Version:    0.2
 Release:    1
 Group:      Qt/Qt
 License:    LICENSE
@@ -19,10 +19,14 @@ Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-hydrogen.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
 Requires:   libsailfishapp-launcher
+Requires:   qtmozembed-qt5
+Requires:   sailfish-components-webview-qt5
 BuildRequires:  pkgconfig(sailfishapp) >= 1.0.3
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
+BuildRequires:  pkgconfig(qt5embedwidget)
+BuildRequires:  pkgconfig(sailfishwebengine)
 BuildRequires:  desktop-file-utils
 
 %description

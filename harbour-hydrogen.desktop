@@ -10,3 +10,7 @@ Name=hydrogen
 # Remember to comment out the following line, if you do not want to use
 # a different app name in German locale (de).
 Name[de]=hydrogen
+[X-Sailjail]
+Permissions=Internet;UserDirs;RemovableMedia;Audio;MediaIndexing
+OrganizationName=harbour-hydrogen
+ApplicationName=hydrogen

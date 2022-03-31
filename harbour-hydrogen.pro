@@ -3,12 +3,11 @@ TARGET = harbour-hydrogen
 CONFIG += sailfishapp_qml
 
 DISTFILES += qml/harbour-hydrogen.qml \
+    ../sailfish/harbour-wvex/qml/service-worker.js \
     qml/cover/CoverPage.qml \
     qml/framescript.js \
     rpm/harbour-hydrogen.changes \
-    rpm/harbour-hydrogen.changes.run \
     rpm/harbour-hydrogen.spec \
-    rpm/harbour-hydrogen.yaml \
     translations/*.ts \
     harbour-hydrogen.desktop
 
