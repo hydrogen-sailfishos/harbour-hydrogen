@@ -4,8 +4,10 @@ CONFIG += sailfishapp_qml
 
 DISTFILES += qml/harbour-hydrogen.qml \
     ../sailfish/harbour-wvex/qml/service-worker.js \
+    qml/HydrogenWebView.qml \
     qml/cover/CoverPage.qml \
     qml/framescript.js \
+    qml/server.py \
     rpm/harbour-hydrogen.changes \
     rpm/harbour-hydrogen.spec \
     translations/*.ts \
