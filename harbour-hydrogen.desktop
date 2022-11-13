@@ -4,13 +4,7 @@ X-Nemo-Application-Type=silica-qt5
 Icon=harbour-hydrogen
 Exec=sailfish-qml harbour-hydrogen
 Name=hydrogen
-# translation example:
-# your app name in German locale (de)
-#
-# Remember to comment out the following line, if you do not want to use
-# a different app name in German locale (de).
-Name[de]=hydrogen
 [X-Sailjail]
 Permissions=Internet;UserDirs;RemovableMedia;Audio;MediaIndexing
-OrganizationName=harbour-hydrogen
+OrganizationName=org.github.thigg.harbour-hydrogen
 ApplicationName=hydrogen

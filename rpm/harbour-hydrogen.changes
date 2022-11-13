@@ -5,6 +5,11 @@
 
 # * date Author's Name <author's email> version-release
 # - Summary of changes
+* Thu Sun 13 2022 thigg  0.3.4
+- bumped hydrogen to version 0.3.4
+- major new feature: creating/joining rooms
+* Thu Mar 31 2022 thigg  0.3
+- bumped hydrogen to version 0.3.0
 * Thu Mar 31 2022 thigg  0.2
 - compatible to sfos 4.4, compiled for FF78, logging forwarded
 * Fri Nov 26 2021 thigg  0.1
