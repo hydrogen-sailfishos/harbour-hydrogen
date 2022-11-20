@@ -5,7 +5,9 @@
 
 # * date Author's Name <author's email> version-release
 # - Summary of changes
-* Thu Sun 13 2022 thigg  0.3.4
+* Sun Nov 20 2022 thigg  0.3.4.1
+- custom hotfix for missing back buttons on some pages
+* Sun Nov 13 2022 thigg  0.3.4
 - bumped hydrogen to version 0.3.4
 - major new feature: creating/joining rooms
 * Thu Mar 31 2022 thigg  0.3

@@ -3,7 +3,6 @@ TARGET = harbour-hydrogen
 CONFIG += sailfishapp_qml
 
 DISTFILES += qml/harbour-hydrogen.qml \
-    ../sailfish/harbour-wvex/qml/service-worker.js \
     qml/HydrogenWebView.qml \
     qml/cover/CoverPage.qml \
     qml/framescript.js \
@@ -14,7 +13,7 @@ DISTFILES += qml/harbour-hydrogen.qml \
     harbour-hydrogen.desktop
 
 webapp.path += /usr/share/harbour-hydrogen/hydrogen
-webapp.files = hydrogen/*
+webapp.files = hydrogen/target/*
 
 INSTALLS += webapp
 
