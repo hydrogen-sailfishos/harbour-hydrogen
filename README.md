@@ -12,22 +12,10 @@ or help here, if it has something to do with SailfishOS. In case of doubt, ask h
 
 Overview:
  1. checkout this project
- 2. checkout [modified hydrogen web](https://github.com/thigg/hydrogen-web/tree/sfos)
- 3. build hydrogen web
- 4. link hydrogen build artifacts into this project
- 5. build this project
+ 2. run `build.sh`
+ 3. ignore the non-working steps, but hydrogen should now be setup as submodule and built
+ 4. build this project
 
-Something like this:
-```bash
-git clone https://github.com/thigg/hydrogen-web.git
-cd hydrogen-web
-git switch sfos
-yarn install # for build dependencies see the hydrogen-web project
-yarn build
-cd ..
-git clone https://github.com/thigg/sfos-hydrogen.git
-cd sfos-hydrogen
-ln -s ../hydrogen-web/target ./hydrogen
 ```
 ## Developing
 
