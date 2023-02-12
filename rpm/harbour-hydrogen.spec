@@ -9,7 +9,7 @@ Name:       harbour-hydrogen
 # << macros
 
 Summary:    hydrogen, a matrix client
-Version:    0.3.4.1
+Version:    0.3.7.1
 Release:    1
 Group:      Qt/Qt
 License:    LICENSE
