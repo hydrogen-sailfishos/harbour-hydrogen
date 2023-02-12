@@ -16,7 +16,6 @@ License:    LICENSE
 BuildArch:  noarch
 URL:        https://github.com/thigg/sfos-hydrogen
 Source0:    %{name}-%{version}.tar.bz2
-Source100:  harbour-hydrogen.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
 Requires:   libsailfishapp-launcher
 Requires:   sailfish-components-webview-qt5
