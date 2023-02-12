@@ -17,7 +17,6 @@ BuildArch:  noarch
 URL:        https://github.com/thigg/sfos-hydrogen
 Source0:    %{name}-%{version}.tar.bz2
 Requires:   sailfishsilica-qt5 >= 0.10.9
-Requires:   libsailfishapp-launcher
 Requires:   sailfish-components-webview-qt5
 BuildRequires:  pkgconfig(sailfishapp) >= 1.0.3
 BuildRequires:  pkgconfig(Qt5Core)
@@ -69,3 +68,5 @@ desktop-file-install --delete-original       \
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 # >> files
 # << files
+
+%changelog
