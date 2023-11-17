@@ -16,8 +16,9 @@ ApplicationWindow {
 
             setHandler('finished', function (serverPort) {
                 console.debug("webserver ready")
+                var rand = Math.floor(Math.random() * (1<<20))
                 webview.url = Qt.resolvedUrl(
-                            "http://localhost:" + serverPort + "/index.html")
+                            "http://localhost:" + serverPort + "/index.html?rand=" + rand)
             })
             setHandler('log', function (newvalue) {
                 console.debug(newvalue)
