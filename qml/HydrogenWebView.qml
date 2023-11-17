@@ -27,6 +27,11 @@ WebViewPage {
             case "webview:log":
                 console.log("webapp-log: " + JSON.stringify(data))
                 break
+            case "embed:linkclicked":
+                var url = '/^http:\/\/localhost/'
+                if (!data.uri.match('http://localhost'))
+                    Qt.openUrlExternally(data['uri'])
+                break
             default:
                 console.log("Message: " + JSON.stringify(
                                 message) + " data: " + JSON.stringify(data))
