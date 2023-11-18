@@ -116,6 +116,7 @@ ApplicationWindow {
     }
 
     property alias zoom: localConfig.zoom
+    property alias ambienceMode: localConfig.ambienceMode
 
     // application settings:
     ConfigurationGroup  {
@@ -127,8 +128,7 @@ ApplicationWindow {
         scope: localSettings
         path:  "app"
         property double zoom: 1.0
-        //property int    memCache
-
+        property int ambienceMode: WebEngineSettings.FollowsAmbience
     }
 }
 

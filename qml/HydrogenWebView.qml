@@ -84,6 +84,9 @@ WebViewFlickable {
                     "security.fileuri.strict_origin_policy", false,
                     WebEngineSettings.BoolPref)
         WebEngineSettings.pixelRatio        = (app.zoom*Theme.pixelRatio*10)/10.0
+        if (app.ambienceMode) {
+            WebEngineSettings.colorScheme   = WebEngineSettings.FollowsAmbience
+        }
     }
 }
 
