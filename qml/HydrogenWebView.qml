@@ -31,6 +31,9 @@ WebViewFlickable {
             }
         }
     }
+    Component.onCompleted: {
+        startWebEngine()
+    }
 
     webView {
         id: webview
@@ -75,6 +78,12 @@ WebViewFlickable {
                 webview.runJavaScript(notificationScript);
             }
         }
+    }
+    function startWebEngine() {
+        WebEngineSettings.setPreference(
+                    "security.fileuri.strict_origin_policy", false,
+                    WebEngineSettings.BoolPref)
+        WebEngineSettings.pixelRatio        = (app.zoom*Theme.pixelRatio*10)/10.0
     }
 }
 
