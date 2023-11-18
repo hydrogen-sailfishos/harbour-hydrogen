@@ -46,7 +46,7 @@ Page {
                 stepSize: 0.2
                 value: app.zoom
                 valueText: "x" + value
-                onReleased: app.zoom = sliderValue
+                onReleased:  { app.zoom = sliderValue; app.localConfig.sync() }
             }
             /*
             Slider{

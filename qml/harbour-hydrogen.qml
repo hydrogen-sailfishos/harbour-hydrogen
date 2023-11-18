@@ -3,12 +3,9 @@ import Sailfish.Silica 1.0
 import Sailfish.WebView 1.0
 import Sailfish.WebEngine 1.0
 import Nemo.DBus 2.0
-import io.thp.pyotherside 1.5
-<<<<<<< HEAD
-import "cover"
-=======
 import Nemo.Configuration 1.0
->>>>>>> 8966218... [Settings] Add Configuration section
+import io.thp.pyotherside 1.5
+import "cover"
 
 ApplicationWindow {
     id: app
@@ -118,19 +115,18 @@ ApplicationWindow {
         }
     }
 
-    property alias zoom: config.zoom
-    //property alias memCache: config.memCache
+    property alias zoom: localConfig.zoom
 
     // application settings:
     ConfigurationGroup  {
-        id: settings
+        id: localSettings
         path: "/org/github/hydrogen-sailfishos"
     }
     ConfigurationGroup  {
-        id: config
-        scope: settings
+        id: localConfig
+        scope: localSettings
         path:  "app"
-        property double zoom
+        property double zoom: 1.0
         //property int    memCache
 
     }
