@@ -16,7 +16,7 @@ ApplicationWindow {
 
             setHandler('finished', function (serverPort) {
                 console.debug("webserver ready")
-                webview.url = Qt.resolvedUrl(
+                webviewPage.url = Qt.resolvedUrl(
                             "http://localhost:" + serverPort + "/index.html")
             })
             setHandler('log', function (newvalue) {
@@ -30,7 +30,8 @@ ApplicationWindow {
         }
     }
 
-    initialPage: HydrogenWebView {
-        id: webview
+    initialPage:
+       HydrogenWebViewPage{
+          id: webviewPage
     }
 }
