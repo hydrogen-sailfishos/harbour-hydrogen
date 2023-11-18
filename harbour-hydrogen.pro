@@ -4,6 +4,7 @@ CONFIG += sailfishapp_qml
 
 DISTFILES += qml/harbour-hydrogen.qml \
     qml/HydrogenWebView.qml \
+    qml/HydrogenWebViewPage.qml \
     qml/cover/CoverPage.qml \
     qml/framescript.js \
     qml/server.py \

@@ -60,7 +60,8 @@ ApplicationWindow {
         }
     }
 
-    initialPage: HydrogenWebView {
-        id: webview
+    initialPage:
+       HydrogenWebViewPage{
+          id: webviewPage
     }
 }
