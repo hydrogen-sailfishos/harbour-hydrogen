@@ -7,6 +7,7 @@ DISTFILES += \
     qml/HydrogenWebView.qml \
     qml/HydrogenWebViewPage.qml \
     qml/cover/HydrogenCover.qml \
+    qml/pages/SettingsPage.qml \
     qml/framescript.js \
     qml/notificationCount.js \
     qml/server.py \
