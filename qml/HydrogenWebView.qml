@@ -18,12 +18,7 @@ WebViewFlickable {
 
     Private.VirtualKeyboardObserver {
         id: virtualKeyboardObserver
-
         active: webview.enabled
-        //transpose: window._transpose
-        //orientation: browserPage.orientation
-
-        //onWindowChanged: webview.chromeWindow = window
 
         // Update content height only after virtual keyboard fully opened.
         states: State {
@@ -31,8 +26,7 @@ WebViewFlickable {
             when: virtualKeyboardObserver.opened && webview.enabled
             PropertyChanges {
                 target: webview
-                //TODO: make this work for Landscape mode as well
-                viewportHeight: Screen.height - virtualKeyboardObserver.imSize
+                viewportHeight: isPortait ? Screen.height - virtualKeyboardObserver.imSize : Screen.width - Qt.inputMethod.keyboardRectangle.width
             }
         }
     }
