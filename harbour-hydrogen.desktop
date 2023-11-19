@@ -1,8 +1,9 @@
 [Desktop Entry]
 Type=Application
-X-Nemo-Application-Type=silica-qt5
+X-Nemo-Application-Type=silica-qt5,browser
 Icon=harbour-hydrogen
-Exec=sailfish-qml harbour-hydrogen %u
+#Exec=sailfish-qml harbour-hydrogen %u
+Exec=/usr/bin/invoker --type=silica-qt5,browser -A -- /usr/bin/harbour-hydrogen %u
 Name=hydrogen
 MimeType=x-url-handler/matrix.to;x-scheme-handler:matrix;
 [X-Sailjail]
