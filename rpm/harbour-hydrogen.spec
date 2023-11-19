@@ -71,6 +71,7 @@ desktop-file-install --delete-original       \
 %post
 # >> post
 %systemd_post booster-browser@%{name}.service
+systemctl-user start booster-browser@%{name}.service ||:
 # << post
 
 %postun
