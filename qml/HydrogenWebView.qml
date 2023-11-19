@@ -6,7 +6,6 @@ import io.thp.pyotherside 1.5
 
 WebViewPage {
 
-    property alias url: webview.url
     allowedOrientations: Orientation.All
 
     Component.onCompleted: {
@@ -16,12 +15,16 @@ WebViewPage {
     }
     WebView {
         id: webview
+        url: app.hydrogenUrl
         anchors.fill: parent
 
         onViewInitialized: {
             console.log("loading framescript")
             webview.loadFrameScript(Qt.resolvedUrl("framescript.js"))
             webview.addMessageListener("webview:log")
+        }
+        onUrlChanged: {
+            app.handleUrlChange(url)
         }
         onRecvAsyncMessage: {
             switch (message) {

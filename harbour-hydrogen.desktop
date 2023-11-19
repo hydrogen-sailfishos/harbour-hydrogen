@@ -2,8 +2,9 @@
 Type=Application
 X-Nemo-Application-Type=silica-qt5
 Icon=harbour-hydrogen
-Exec=sailfish-qml harbour-hydrogen
+Exec=sailfish-qml harbour-hydrogen %u
 Name=hydrogen
+MimeType=x-url-handler/matrix.to;x-scheme-handler:matrix;
 [X-Sailjail]
 Permissions=Internet;UserDirs;RemovableMedia;Audio;MediaIndexing
 OrganizationName=org.github.thigg.harbour-hydrogen
