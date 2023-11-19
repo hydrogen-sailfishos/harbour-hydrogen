@@ -2,8 +2,6 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 CoverBackground {
-    property int notificationCount: 0
-
     readonly property color hyColor:               "#0dbd8b"
     readonly property color hylightColor:          Theme.highlightFromColor("", Theme.ColorScheme)
     readonly property color secondaryHylightColor: Theme.secondaryHighlightFromColor("", Theme.ColorScheme)
