@@ -16,10 +16,6 @@ WebViewPage {
                 text: qsTr('Settings')
                 onClicked: hydrogenwebview.enterSettingsView()
             }
-            MenuItem{
-                text: qsTr('Back')
-
-            }
         }
 
     }
