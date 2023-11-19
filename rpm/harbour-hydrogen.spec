@@ -80,7 +80,7 @@ desktop-file-install --delete-original       \
 
 %files
 %defattr(-,root,root,-)
-%{_bindir}/%{name}
+%attr(755)%{_bindir}/%{name}
 %defattr(0644,root,root,-)
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
