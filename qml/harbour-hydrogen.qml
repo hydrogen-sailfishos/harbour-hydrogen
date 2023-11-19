@@ -3,12 +3,20 @@ import Sailfish.Silica 1.0
 import Sailfish.WebView 1.0
 import Sailfish.WebEngine 1.0
 import io.thp.pyotherside 1.5
+import "cover"
 
 ApplicationWindow {
     id: app
-    cover: Qt.resolvedUrl("cover/CoverPage.qml")
+    cover: HydrogenCover{
+        notificationCount: app.notificationCount
+    }
+
     allowedOrientations: Orientation.All
     property var openingArgument: Qt.application.arguments
+    property int notificationCount: 0
+    onNotificationCountChanged: {
+        console.log("Updated notification count")
+    }
 
     Python {
         id: py

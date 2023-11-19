@@ -39,6 +39,7 @@ WebViewFlickable {
             console.log("loading framescript")
             webview.loadFrameScript(Qt.resolvedUrl("framescript.js"))
             webview.addMessageListener("webview:log")
+            webview.addMessageListener("webview:notificationCount")
         }
         onUrlChanged: {
             app.handleUrlChange(webview.url)
@@ -47,6 +48,9 @@ WebViewFlickable {
             switch (message) {
             case "webview:log":
                 console.log("webapp-log: " + JSON.stringify(data))
+                break
+            case "webview:notificationCount":
+                app.notificationCount = data.count
                 break
             default:
                 console.log("Message: " + JSON.stringify(
@@ -76,7 +80,7 @@ function refreshSession() {
         request.onsuccess = function(event) {
           console.log(`Result is`,request.result);
           var notificationCount = request.result.reduce((sum, item) => sum + item.notificationCount, 0);
-          var customEvent = new CustomEvent("framescript:log",
+          var customEvent = new CustomEvent("framescript:notificationCount",
                            { detail: { count: notificationCount }});
           document.dispatchEvent(customEvent);
         };
