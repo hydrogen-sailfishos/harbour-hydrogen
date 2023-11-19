@@ -23,7 +23,7 @@ webapp.files = hydrogen/target/*
 INSTALLS += webapp
 
 sdconf.files += 50-$${TARGET}.conf
-sdconf.path += /usr/lib/systemd/user-session.target.d
+sdconf.path += /usr/lib/systemd/user/user-session.target.d
 INSTALLS += sdconf
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172
