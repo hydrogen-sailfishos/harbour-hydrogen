@@ -2,7 +2,8 @@ TARGET = harbour-hydrogen
 
 CONFIG += sailfishapp_qml
 
-DISTFILES += qml/harbour-hydrogen.qml \
+DISTFILES += \
+    qml/harbour-hydrogen.qml \
     qml/HydrogenWebView.qml \
     qml/HydrogenWebViewPage.qml \
     qml/cover/HydrogenCover.qml \
@@ -25,8 +26,15 @@ SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172
 # following CONFIG line
 CONFIG += sailfishapp_i18n
 
-# German translation is enabled as an example. If you aren't
-# planning to localize your app, remember to comment out the
-# following TRANSLATIONS line. And also do not forget to
-# modify the localized app name in the the .desktop file.
-TRANSLATIONS += translations/harbour-hydrogen-de.ts
+# add sources only for updating translatin files
+lupdate_only {
+SOURCES += \
+    qml/$${TARGET}.qml \
+    qml/*.qml \
+    qml/pages/*.qml \
+    qml/cover/*.qml \
+    qml/components/*.qml
+}
+TRANSLATIONS += translations/harbour-hydrogen-de.ts\
+                translations/harbour-hydrogen-fr.ts\
+                translations/harbour-hydrogen-ro.ts
