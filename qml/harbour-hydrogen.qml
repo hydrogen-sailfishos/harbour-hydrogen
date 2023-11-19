@@ -10,6 +10,20 @@ ApplicationWindow {
     allowedOrientations: Orientation.All
     property var openingArgument: Qt.application.arguments
 
+
+    /* array of string.
+       Use it something like below.
+       Note that you can't usefully push() and pop() QML var type arrays.
+
+            addMessage(message) {
+                var msgs = coverMessages
+                msgs.splice (message)
+                coverMessage = msgs
+            }
+    */
+    property var coverMessages: [] 
+    property string coverTitle: "" // e.g. qsTr("New Messages")
+
     Python {
         id: py
         Component.onCompleted: {
