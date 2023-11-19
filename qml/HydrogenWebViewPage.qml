@@ -4,6 +4,7 @@ import Sailfish.WebView 1.0
 
 WebViewPage {
     property string url
+    allowedOrientations: Orientation.All
 
     HydrogenWebView {
         id: hydrogenwebview

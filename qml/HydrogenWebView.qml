@@ -7,7 +7,6 @@ import io.thp.pyotherside 1.5
 
 WebViewFlickable {
     id: webviewFlickable
-    allowedOrientations: Orientation.All
     function runJavaScript(script) {
         webView.runJavaScript(script)
     }
