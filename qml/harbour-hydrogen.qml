@@ -5,6 +5,7 @@ import Sailfish.WebEngine 1.0
 import io.thp.pyotherside 1.5
 
 ApplicationWindow {
+    id: app
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: Orientation.All
     property var openingArgument: Qt.application.arguments
