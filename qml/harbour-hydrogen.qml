@@ -5,10 +5,8 @@ import Sailfish.WebEngine 1.0
 import io.thp.pyotherside 1.5
 
 ApplicationWindow {
-    id: app
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: Orientation.All
-    property string hydrogenUrl
     property var openingArgument: Qt.application.arguments
 
     Python {
@@ -20,7 +18,7 @@ ApplicationWindow {
             setHandler('finished', function (serverPort) {
                 console.debug("webserver ready")
                 var rand = Math.floor(Math.random() * (1<<20))
-                app.hydrogenUrl = Qt.resolvedUrl(
+                webview.url = Qt.resolvedUrl(
                             "http://localhost:" + serverPort + "/index.html?rand=" + rand)
             })
             setHandler('log', function (newvalue) {

@@ -40,7 +40,6 @@ WebViewFlickable {
 
     webView {
         id: webview
-        url: app.hydrogenUrl
         anchors.fill: parent
         onViewInitialized: {
             console.log("loading framescript")
