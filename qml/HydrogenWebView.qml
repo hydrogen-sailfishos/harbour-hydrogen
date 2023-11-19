@@ -7,8 +7,9 @@ import io.thp.pyotherside 1.5
 
 WebViewFlickable {
     id: webviewFlickable
+    property string urlFromParent
     function runJavaScript(script) {
-        webView.runJavaScript(script)
+        webview.runJavaScript(script)
     }
     function enterSettingsView() {
         var urlParts = app.hydrogenUrl.toString().split('session')
@@ -40,13 +41,14 @@ WebViewFlickable {
     webView {
         id: webview
         anchors.fill: parent
+        url: urlFromParent
         onViewInitialized: {
             console.log("loading framescript")
             webview.loadFrameScript(Qt.resolvedUrl("framescript.js"))
             webview.addMessageListener("webview:log")
         }
         onUrlChanged: {
-            app.handleUrlChange(url)
+            app.handleUrlChange(webview.url)
         }
         onRecvAsyncMessage: {
             switch (message) {

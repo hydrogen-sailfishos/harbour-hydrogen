@@ -18,7 +18,7 @@ ApplicationWindow {
             setHandler('finished', function (serverPort) {
                 console.debug("webserver ready")
                 var rand = Math.floor(Math.random() * (1<<20))
-                webview.url = Qt.resolvedUrl(
+                webviewPage.url = Qt.resolvedUrl(
                             "http://localhost:" + serverPort + "/index.html?rand=" + rand)
             })
             setHandler('log', function (newvalue) {
@@ -51,8 +51,8 @@ ApplicationWindow {
         var session = getSessionURL(url)
         if (invit && session) {
             var invitURL = session + '/room/' + invit
-            if (app.hydrogenUrl != invitURL) {
-                app.hydrogenUrl = invitURL
+            if (webviewPage.url != invitURL) {
+                webviewPage.url = invitURL
                 openingArgument[2] = null
             }
         }
