@@ -8,4 +8,11 @@
         <translation type="unfinished"></translation>
     </message>
 </context>
+<context>
+    <name>HydrogenWebViewPage</name>
+    <message>
+        <source>Settings</source>
+        <translation>Einstellungen</translation>
+    </message>
+</context>
 </TS>
