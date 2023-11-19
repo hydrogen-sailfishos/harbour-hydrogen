@@ -29,6 +29,7 @@ CONFIG += sailfishapp_i18n
 lupdate_only {
 SOURCES += \
     qml/$${TARGET}.qml \
+    qml/*.qml \
     qml/pages/*.qml \
     qml/cover/*.qml \
     qml/components/*.qml
