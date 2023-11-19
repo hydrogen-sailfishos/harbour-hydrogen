@@ -14,12 +14,17 @@ DISTFILES += qml/harbour-hydrogen.qml \
     rpm/harbour-hydrogen.changes \
     rpm/harbour-hydrogen.spec \
     translations/*.ts \
-    harbour-hydrogen.desktop
+    harbour-hydrogen.desktop \
+    50-$${TARGET}.conf
 
 webapp.path += /usr/share/harbour-hydrogen/hydrogen
 webapp.files = hydrogen/target/*
 
 INSTALLS += webapp
+
+sdconf.files += 50-$${TARGET}.conf
+sdconf.path += /usr/lib/systemd/user-session.target.d
+INSTALLS += sdconf
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172
 
