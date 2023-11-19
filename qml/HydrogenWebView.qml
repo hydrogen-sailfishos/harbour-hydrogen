@@ -23,6 +23,9 @@ WebViewPage {
             webview.loadFrameScript(Qt.resolvedUrl("framescript.js"))
             webview.addMessageListener("webview:log")
         }
+        onUrlChanged: {
+            app.handleUrlChange(url)
+        }
         onRecvAsyncMessage: {
             switch (message) {
             case "webview:log":
