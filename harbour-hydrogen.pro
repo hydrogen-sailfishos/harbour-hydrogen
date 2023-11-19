@@ -1,9 +1,9 @@
 TEMPLATE = app
 TARGET = harbour-hydrogen
 
-CONFIG += sailfishapp sailfishapp_qml
+CONFIG += sailfishapp
 
-SOURCES += src/main.cpp
+SOURCES += src/$${TARGET}.cpp
 INCLUDEPATH += .
 
 DISTFILES += qml/harbour-hydrogen.qml \
