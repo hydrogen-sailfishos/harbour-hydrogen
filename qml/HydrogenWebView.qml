@@ -12,9 +12,8 @@ WebViewFlickable {
         webview.runJavaScript(script)
     }
     function enterSettingsView() {
-        var urlParts = app.hydrogenUrl.toString().split('session')
-        var settingsURL = urlParts[0] + 'session/'+ urlParts[1].split('/')[1] + '/settings'
-        app.hydrogenUrl = settingsURL
+        var settingsURL = app.getSessionURL(webview.url) + '/settings'
+        webview.url = settingsURL
     }
 
     Private.VirtualKeyboardObserver {
