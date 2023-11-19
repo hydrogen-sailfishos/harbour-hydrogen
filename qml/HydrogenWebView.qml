@@ -6,7 +6,6 @@ import io.thp.pyotherside 1.5
 
 WebViewPage {
 
-    property alias url: webview.url
     allowedOrientations: Orientation.All
 
     Component.onCompleted: {
@@ -16,6 +15,7 @@ WebViewPage {
     }
     WebView {
         id: webview
+        url: app.hydrogenUrl
         anchors.fill: parent
 
         onViewInitialized: {
