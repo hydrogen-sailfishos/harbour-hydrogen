@@ -19,6 +19,7 @@ Source0:    %{name}-%{version}.tar.bz2
 Source1:    release.zip
 Requires:   sailfishsilica-qt5 >= 0.10.9
 Requires:   sailfish-components-webview-qt5
+Requires(post): systemd
 BuildRequires:  pkgconfig(sailfishapp) >= 1.0.3
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
