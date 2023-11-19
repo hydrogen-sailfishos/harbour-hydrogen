@@ -13,7 +13,7 @@ Version:    0.4.1
 Release:    1
 Group:      Qt/Qt
 License:    LICENSE
-BuildArch:  noarch
+#BuildArch:  noarch
 URL:        https://github.com/thigg/sfos-hydrogen
 Source0:    %{name}-%{version}.tar.bz2
 Source1:    release.zip
@@ -62,9 +62,25 @@ desktop-file-install --delete-original       \
   --dir %{buildroot}%{_datadir}/applications             \
    %{buildroot}%{_datadir}/applications/*.desktop
 
+%preun
+# >> preun
+%systemd_preun booster-browser@%{name}.service
+# << preun
+
+%post
+# >> post
+%systemd_post booster-browser@%{name}.service
+# << post
+
+%postun
+# >> postun
+%systemd_postun booster-browser@%{name}.service
+# << postun
+
 %files
 %defattr(-,root,root,-)
 %defattr(0644,root,root,-)
+%{_bindir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
