@@ -7,6 +7,7 @@ DISTFILES += qml/harbour-hydrogen.qml \
     qml/HydrogenWebViewPage.qml \
     qml/cover/HydrogenCover.qml \
     qml/framescript.js \
+    qml/notificationCount.js \
     qml/server.py \
     rpm/harbour-hydrogen.changes \
     rpm/harbour-hydrogen.spec \
