@@ -2,6 +2,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import Sailfish.WebView 1.0
 import Sailfish.WebEngine 1.0
+import Nemo.DBus 2.0
 import io.thp.pyotherside 1.5
 import "cover"
 
@@ -82,5 +83,32 @@ ApplicationWindow {
     initialPage:
        HydrogenWebViewPage{
           id: webviewPage
+    }
+
+    DBusAdaptor {
+        id: dbuslistener
+
+        bus: DBus.SessionBus
+        service: 'org.github.hydrogen-sailfishos.harbour-hydrogen.hydrogen'
+        path: '/hydrogen/ui'
+        // NB: DBus does not allow hyphens in interface names:
+        iface: 'org.github.HydrogenSailfishOS.Hydrogen.ui'
+        xml: '<interface name="org.github.HydrogenSailfishOS.Hydrogen.ui">
+               <method name="openUrl">
+                 <arg name="url" type="s" direction="in"/>
+               </method>
+             </interface>'
+
+        function openUrl(u) {
+            console.debug("openUrl called via DBus: %1".arg(u))
+            webviewPage.url = u
+        }
+        Component.onCompleted: {
+            console.info("Registered D-Bus service %1".arg(service) )
+            console.info("Registered D-Bus interface %1".arg(iface) )
+        }
+        Component.onDestruction: {
+            console.info("Unregistering D-Bus service" + service )
+        }
     }
 }
