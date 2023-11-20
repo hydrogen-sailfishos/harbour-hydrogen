@@ -3,9 +3,9 @@ import Sailfish.Silica 1.0
 
 CoverBackground {
     readonly property color hyColor:               "#0dbd8b"
-    readonly property color hylightColor:          Theme.highlightFromColor("", Theme.ColorScheme)
-    readonly property color secondaryHylightColor: Theme.secondaryHighlightFromColor("", Theme.ColorScheme)
-    readonly property color dimmerHylightColor:    Theme.highlightDimmerFromColor("", Theme.ColorScheme)
+    readonly property color hylightColor:          Theme.highlightFromColor(hyColor, Theme.ColorScheme)
+    //readonly property color secondaryHylightColor: Theme.secondaryHighlightFromColor(hyColor, Theme.ColorScheme)
+    //readonly property color dimmerHylightColor:    Theme.highlightDimmerFromColor(hyColor, Theme.ColorScheme)
     readonly property color logoColor:             Theme.rgba(hyColor, Theme.OpacityFaint)
     Icon {
         z: -1
@@ -19,16 +19,14 @@ CoverBackground {
         //Behavior on height  { PropertyAnimation { duration: 1200 ; easing.type: Easing.InBounce } }
     }
     Label {
-        id: label
+        id: nameLabel
         text: qsTr("Hydrogen")
         x: (parent.width  - (width +  Theme.paddingLarge))
-        y: (parent.height - (height + Theme.paddingMedium))
-        //rotation: -90
-        font.pixelSize: Theme.fontSizeMedium
-        color:   visible ? hyColor : logoColor
-        opacity: visible ? 1.0 : 0.2
-        Behavior on opacity { FadeAnimator { duration: 2400; easing.type: Easing.OutBounce  } }
+        y: visible ? (parent.height - (height + Theme.paddingSmall*3)) : parent.height + height
+        font.pixelSize: Theme.fontSizeLarge
+        color:   visible ? Theme.secondaryColor : hylightColor
         Behavior on color { ColorAnimation { duration: 2400 } }
+        Behavior on y { PropertyAnimation { duration: 2400 } }
     }
     Label { id: titleLabel
         visible: app.coverTitle.length > 0
