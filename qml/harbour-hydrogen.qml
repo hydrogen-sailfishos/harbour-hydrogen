@@ -40,7 +40,7 @@ ApplicationWindow {
             setHandler('finished', function (serverPort) {
                 console.debug("webserver ready")
                 var rand = Math.floor(Math.random() * (1<<20))
-                webviewPage.url = Qt.resolvedUrl(
+                webviewPage.hydrogenwebview.webView.url = Qt.resolvedUrl(
                             "http://localhost:" + serverPort + "/index.html?rand=" + rand)
             })
             setHandler('log', function (newvalue) {
@@ -73,8 +73,8 @@ ApplicationWindow {
         var session = getSessionURL(url)
         if (invit && session) {
             var invitURL = session + '/room/' + invit
-            if (webviewPage.url != invitURL) {
-                webviewPage.url = invitURL
+            if (webviewPage.hydrogenwebview.webView.url != invitURL) {
+                webviewPage.hydrogenwebview.webView.url = invitURL
                 openingArgument[2] = null
             }
         }
@@ -101,7 +101,7 @@ ApplicationWindow {
 
         function openUrl(u) {
             console.debug("openUrl called via DBus: %1".arg(u))
-            webviewPage.url = u
+            webviewPage.hydrogenwebview.webView.url = u
             app.activate()
         }
         Component.onCompleted: {

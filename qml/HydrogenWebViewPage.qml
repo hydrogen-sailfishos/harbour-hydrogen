@@ -4,12 +4,12 @@ import Sailfish.WebView 1.0
 
 WebViewPage {
     property string url
+    property alias hydrogenwebview: hydrogenwebview
     allowedOrientations: Orientation.All
 
     HydrogenWebView {
         id: hydrogenwebview
         anchors.fill: parent
-        urlFromParent: url
 
         PullDownMenu {
             MenuItem{

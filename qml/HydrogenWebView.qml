@@ -34,7 +34,6 @@ WebViewFlickable {
     webView {
         id: webview
         anchors.fill: parent
-        url: urlFromParent
         onViewInitialized: {
             console.log("loading framescript")
             webview.loadFrameScript(Qt.resolvedUrl("framescript.js"))
