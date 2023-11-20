@@ -10,4 +10,4 @@ X-DBusActivatable=true
 Permissions=Internet;UserDirs;RemovableMedia;Audio;MediaIndexing
 OrganizationName=org.github.hydrogen-sailfishos.harbour-hydrogen
 ApplicationName=hydrogen
-ExecDBus=/usr/bin/invoker --type=silica-qt5 --id=harbour-hydrogen --single-instance sailfish-qml harbour-hydrogen --dbus
+ExecDBus=/usr/bin/invoker --type=silica-qt5 --single-instance sailfish-qml harbour-hydrogen
