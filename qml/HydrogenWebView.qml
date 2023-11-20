@@ -39,6 +39,7 @@ WebViewFlickable {
             console.log("loading framescript")
             webview.loadFrameScript(Qt.resolvedUrl("framescript.js"))
             webview.addMessageListener("webview:log")
+            webview.addMessageListener("webview:notificationCount")
         }
         onUrlChanged: {
             app.handleUrlChange(webview.url)
@@ -48,9 +49,25 @@ WebViewFlickable {
             case "webview:log":
                 console.log("webapp-log: " + JSON.stringify(data))
                 break
+            case "webview:notificationCount":
+                app.coverTitle = qsTr("Messages: %1").arg(data.count)
+                app.coverMessages = data.top5
+                break
             default:
                 console.log("Message: " + JSON.stringify(
                                 message) + " data: " + JSON.stringify(data))
+            }
+        }
+        onLoadedChanged: {
+            if (webview.loaded) {
+                var readFile = function(path) {
+                    var file = new XMLHttpRequest();
+                    file.open("GET", path, false); // Synchronous
+                    file.send(null);
+                    return file.responseText;
+                }
+                var notificationScript = readFile(Qt.resolvedUrl("notificationCount.js"));
+                webview.runJavaScript(notificationScript);
             }
         }
     }

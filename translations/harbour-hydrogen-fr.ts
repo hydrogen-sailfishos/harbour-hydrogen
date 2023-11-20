@@ -2,9 +2,23 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
-    <name>CoverPage</name>
+    <name>HydrogenCover</name>
     <message>
-        <source>hydrogen</source>
+        <source>Hydrogen</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>HydrogenWebView</name>
+    <message>
+        <source>Messages: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>HydrogenWebViewPage</name>
+    <message>
+        <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
