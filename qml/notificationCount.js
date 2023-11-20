@@ -20,7 +20,7 @@ function refreshSession() {
           var notificationCount = request.result.reduce((sum, item) => sum + item.notificationCount, 0);
           // Most recent 5 discussions with unread:
           let top5 = request.result.filter(item => !!item.notificationCount)
-                .sort((x,y) => y.lastMessageTimestamp - x.lastMessageTimestamp)
+                .sort((x,y) => x.lastMessageTimestamp - y.lastMessageTimestamp)
                 .slice(-5).map(item => item.name || item.heroes[0])
                 .reverse();
 

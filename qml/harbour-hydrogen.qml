@@ -7,9 +7,7 @@ import "cover"
 
 ApplicationWindow {
     id: app
-    cover: HydrogenCover{
-        notificationCount: app.notificationCount
-    }
+    cover: HydrogenCover{}
 
     allowedOrientations: Orientation.All
     property var openingArgument: Qt.application.arguments
