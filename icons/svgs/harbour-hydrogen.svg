@@ -11,16 +11,39 @@
    enable-background="new 0 0 86 86"
    xml:space="preserve"
    id="svg21"
-   sodipodi:docname="sfos-hydrogen.svg"
+   sodipodi:docname="sfos-hydrogen_g2.svg"
    inkscape:export-filename="/home/thilo/git/private/harbour-hydrogen/icons/172x172/harbour-hydrogen.png"
    inkscape:export-xdpi="192"
    inkscape:export-ydpi="192"
-   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20, custom)"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg"><defs
-   id="defs25" /><sodipodi:namedview
+   id="defs25"><linearGradient
+     inkscape:collect="always"
+     id="linearGradient879"><stop
+       style="stop-color:#0dd299;stop-opacity:1;"
+       offset="0.01691729"
+       id="stop875" /><stop
+       style="stop-color:#0dbd8b;stop-opacity:1;"
+       offset="0.24248122"
+       id="stop1609" /><stop
+       style="stop-color:#0dbd8b;stop-opacity:1;"
+       offset="0.45206764"
+       id="stop2357" /><stop
+       style="stop-color:#0d8762;stop-opacity:1;"
+       offset="1"
+       id="stop877" /></linearGradient><linearGradient
+     inkscape:collect="always"
+     xlink:href="#linearGradient879"
+     id="linearGradient881"
+     x1="0.3"
+     y1="43"
+     x2="85.7"
+     y2="43"
+     gradientUnits="userSpaceOnUse" /></defs><sodipodi:namedview
    id="namedview23"
    pagecolor="#ffffff"
    bordercolor="#666666"
@@ -30,14 +53,16 @@
    inkscape:pagecheckerboard="0"
    showgrid="true"
    inkscape:zoom="3.6377198"
-   inkscape:cx="71.885691"
-   inkscape:cy="42.884007"
-   inkscape:window-width="1914"
-   inkscape:window-height="1025"
-   inkscape:window-x="0"
-   inkscape:window-y="24"
-   inkscape:window-maximized="1"
-   inkscape:current-layer="layer1"><inkscape:grid
+   inkscape:cx="71.198447"
+   inkscape:cy="43.296353"
+   inkscape:window-width="1350"
+   inkscape:window-height="1160"
+   inkscape:window-x="558"
+   inkscape:window-y="23"
+   inkscape:window-maximized="0"
+   inkscape:current-layer="Layer_1"
+   inkscape:showpageshadow="2"
+   inkscape:deskcolor="#d1d1d1"><inkscape:grid
      type="xygrid"
      id="grid17594" /></sodipodi:namedview>
 <g
@@ -66,7 +91,7 @@
    fill="url(#SVGID_1_)"
    d="M84.277,0.3H43C19.417,0.3,0.3,19.418,0.3,43v41.277c0,0.786,0.637,1.423,1.423,1.423H43   c23.583,0,42.7-19.118,42.7-42.7V1.723C85.7,0.937,85.063,0.3,84.277,0.3z"
    id="path8"
-   style="fill:#0dbd8b;fill-opacity:1" />
+   style="fill:url(#linearGradient881);fill-opacity:1" />
 	
 	
 	
