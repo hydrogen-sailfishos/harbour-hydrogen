@@ -109,7 +109,7 @@ ApplicationWindow {
             console.info("Registered D-Bus interface %1".arg(iface) )
         }
         Component.onDestruction: {
-            console.info("Unregistering D-Bus service" + service )
+            console.info("Unregistering D-Bus service %1".arg(service) )
         }
     }
 }
