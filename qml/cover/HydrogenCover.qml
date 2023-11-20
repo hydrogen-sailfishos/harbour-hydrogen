@@ -61,5 +61,14 @@ CoverBackground {
 
     CoverActionList {
         id: coverAction
+        CoverAction {
+            iconSource: "image://theme/icom-cover-sync"
+        }
+        CoverAction {
+            iconSource: "image://theme/icom-cover-message"
+        }
+        CoverAction {
+            iconSource: "image://theme/icom-cover-new"
+        }
     }
 }
