@@ -1,3 +1,5 @@
 hydrogen
 *.pro.user
 .idea
+Makefile
+icons/*x*/

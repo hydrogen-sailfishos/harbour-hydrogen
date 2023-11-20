@@ -44,3 +44,6 @@ SOURCES += \
 TRANSLATIONS += translations/harbour-hydrogen-de.ts\
                 translations/harbour-hydrogen-fr.ts\
                 translations/harbour-hydrogen-ro.ts
+
+include(icons/icons.pri)
+

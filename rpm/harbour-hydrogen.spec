@@ -25,6 +25,7 @@ BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(qt5embedwidget)
 BuildRequires:  pkgconfig(sailfishwebengine)
+BuildRequires:  sailfish-svg2png
 BuildRequires:  desktop-file-utils
 
 %description
