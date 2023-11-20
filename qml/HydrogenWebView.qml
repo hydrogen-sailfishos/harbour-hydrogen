@@ -41,7 +41,7 @@ WebViewFlickable {
             webview.addMessageListener("webview:notificationCount")
         }
         onUrlChanged: {
-            app.handleUrlChange(webview.url)
+            app.handleUrlChange(webview.url, app.openingArgument)
         }
         onRecvAsyncMessage: {
             switch (message) {

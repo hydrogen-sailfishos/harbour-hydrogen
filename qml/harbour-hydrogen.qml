@@ -11,7 +11,6 @@ ApplicationWindow {
     cover: HydrogenCover{}
 
     allowedOrientations: Orientation.All
-    property var openingArgument: Qt.application.arguments
     property int notificationCount: 0
     onNotificationCountChanged: {
         console.log("Updated notification count")
@@ -54,9 +53,9 @@ ApplicationWindow {
         }
     }
 
-    function cleanInvitation() {
-        if (openingArgument[2]) {
-            var invit_raw = openingArgument[2].split('#/')[1]
+    function cleanInvitation(link) {
+        if (link) {
+            var invit_raw = link.toString().split('#/')[1]
             return encodeURIComponent(invit_raw.split('?')[0])
         }
     }
@@ -68,14 +67,14 @@ ApplicationWindow {
         }
     }
 
-    function handleUrlChange(url) {
-        var invit = cleanInvitation()
-        var session = getSessionURL(url)
-        if (invit && session) {
-            var invitURL = session + '/room/' + invit
+    function handleUrlChange(url, link) {
+        var invit = cleanInvitation(link)
+        var sessionURL = getSessionURL(url)
+        if (invit && sessionURL) {
+            var invitURL = sessionURL + '/room/' + invit
             if (webviewPage.hydrogenwebview.webView.url != invitURL) {
                 webviewPage.hydrogenwebview.webView.url = invitURL
-                openingArgument[2] = null
+                openingArgument = null
             }
         }
     }
@@ -101,7 +100,8 @@ ApplicationWindow {
 
         function openUrl(u) {
             console.debug("openUrl called via DBus: %1".arg(u))
-            webviewPage.hydrogenwebview.webView.url = u
+            openingArgument = u
+            app.handleUrlChange(webviewPage.hydrogenwebview.webView.url, app.openingArgument)
             app.activate()
         }
         Component.onCompleted: {
