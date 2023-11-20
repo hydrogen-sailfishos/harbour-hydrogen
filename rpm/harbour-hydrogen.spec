@@ -81,9 +81,8 @@ systemctl-user start booster-browser@%{name}.service ||:
 # << postun
 
 %files
-%defattr(-,root,root,-)
-%attr(755)%{_bindir}/%{name}
 %defattr(0644,root,root,-)
+%attr(0755,root,root) %{_bindir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
