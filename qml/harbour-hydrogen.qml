@@ -5,6 +5,7 @@ import Sailfish.WebEngine 1.0
 import Nemo.DBus 2.0
 import io.thp.pyotherside 1.5
 import "cover"
+import "components"
 
 ApplicationWindow {
     id: app
@@ -17,6 +18,7 @@ ApplicationWindow {
         console.log("Updated notification count")
     }
 
+    HydrogenNotifier { id: notifier }
 
     /* array of string.
        Use it something like below.
@@ -28,8 +30,11 @@ ApplicationWindow {
                 coverMessage = msgs
             }
     */
-    property var coverMessages: [] 
+    property var coverMessages: []
     property string coverTitle: "" // e.g. qsTr("New Messages")
+    onCoverTitleChanged: {
+        notifier.quickNumberedNotification( "New Messages", coverMessages.length )
+    }
 
     Python {
         id: py
@@ -105,6 +110,10 @@ ApplicationWindow {
             app.handleUrlChange(webviewPage.hydrogenwebview.webView.url, app.openingArgument)
             app.activate()
         }
+        /* internal function: called on Notification click in Event View */
+        function fromNotification(id) {
+            console.debug("fromNotification called via DBus: %1".arg(id))
+        }
         Component.onCompleted: {
             console.info("Registered D-Bus service %1".arg(service) )
             console.info("Registered D-Bus interface %1".arg(iface) )
@@ -114,3 +123,5 @@ ApplicationWindow {
         }
     }
 }
+
+// vim: filetype=javascript expandtab ts=4 sw=4 st=4
