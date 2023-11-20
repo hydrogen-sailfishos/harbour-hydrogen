@@ -60,13 +60,18 @@ rm -rf %{buildroot}
 
 desktop-file-install --delete-original       \
   --dir %{buildroot}%{_datadir}/applications             \
-   %{buildroot}%{_datadir}/applications/*.desktop
+   %{buildroot}%{_datadir}/applications/%{name}.desktop
+
+desktop-file-install --delete-original       \
+  --dir %{buildroot}%{_datadir}/applications             \
+   %{buildroot}%{_datadir}/applications/%{name}-open-url.desktop
 
 %files
 %defattr(-,root,root,-)
 %defattr(0644,root,root,-)
 %{_datadir}/%{name}
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/%{name}*.desktop
+%{_datadir}/applications/%{name}-open-url.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 # >> files
 # << files

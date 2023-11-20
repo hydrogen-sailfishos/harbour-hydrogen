@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Icon=harbour-hydrogen
+Name=Hydrogen
+MimeType=x-url-handler/matrix.to;x-scheme-handler/matrix;
+X-Maemo-Service=org.github.hydrogen-sailfishos.harbour-hydrogen.hydrogen
+X-Maemo-Object-Path=/hydrogen/ui
+X-Maemo-Method=org.github.HydrogenSailfishOS.Hydrogen.ui.openUrl
+
+NotShowIn=X-MeeGo;
+Hidden=true

@@ -13,12 +13,18 @@ DISTFILES += \
     rpm/harbour-hydrogen.changes \
     rpm/harbour-hydrogen.spec \
     translations/*.ts \
-    harbour-hydrogen.desktop
+    harbour-hydrogen.desktop \
+    harbour-hydrogen-open-url.desktop
 
 webapp.path += /usr/share/harbour-hydrogen/hydrogen
 webapp.files = hydrogen/target/*
 
 INSTALLS += webapp
+
+desktop2.path += /usr/share/applications
+desktop2.files = $${TARGET}-open-url.desktop
+
+INSTALLS += desktop2
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172
 

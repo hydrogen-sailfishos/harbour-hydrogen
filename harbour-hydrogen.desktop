@@ -5,7 +5,8 @@ Icon=harbour-hydrogen
 Exec=sailfish-qml harbour-hydrogen %u
 Name=hydrogen
 MimeType=x-url-handler/matrix.to;x-scheme-handler:matrix;
+X-DBusActivatable=true
 [X-Sailjail]
 Permissions=Internet;UserDirs;RemovableMedia;Audio;MediaIndexing
-OrganizationName=org.github.thigg.harbour-hydrogen
+OrganizationName=org.github.hydrogen-sailfishos.harbour-hydrogen
 ApplicationName=hydrogen
