@@ -74,6 +74,7 @@ desktop-file-install --delete-original       \
 %{_datadir}/applications/%{name}*.desktop
 %{_datadir}/applications/%{name}-open-url.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
+%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 # >> files
 # << files
 
