@@ -3,13 +3,6 @@ function getCurrentSession() {
     var matches = window.location.hash.match(/session\/(\d+)/);
     if (matches && matches.length > 1) {
         return matches[1];
-    } else {
-        var sessions = JSON.parse(localStorage.getItem("hydrogen_sessions_v1"));
-        if (!sessions) return;
-        var recent = sessions.sort((x, y) => x.lastUsed - y.lastUsed).pop();
-        if (recent) {
-            return recent.id;
-        }
     }
 }
 
@@ -50,5 +43,5 @@ function refreshSession() {
     }
 }
 
-setInterval(refreshSession, 3000);
+setInterval(refreshSession, 5000);
 
