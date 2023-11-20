@@ -102,6 +102,7 @@ ApplicationWindow {
         function openUrl(u) {
             console.debug("openUrl called via DBus: %1".arg(u))
             webviewPage.url = u
+            app.activate()
         }
         Component.onCompleted: {
             console.info("Registered D-Bus service %1".arg(service) )
