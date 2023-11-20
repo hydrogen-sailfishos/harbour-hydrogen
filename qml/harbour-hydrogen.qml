@@ -12,6 +12,7 @@ ApplicationWindow {
 
     allowedOrientations: Orientation.All
     property int notificationCount: 0
+    property var openingArgument
     onNotificationCountChanged: {
         console.log("Updated notification count")
     }
@@ -74,7 +75,7 @@ ApplicationWindow {
             var invitURL = sessionURL + '/room/' + invit
             if (webviewPage.hydrogenwebview.webView.url != invitURL) {
                 webviewPage.hydrogenwebview.webView.url = invitURL
-                openingArgument = null
+                app.openingArgument = null
             }
         }
     }
@@ -100,7 +101,7 @@ ApplicationWindow {
 
         function openUrl(u) {
             console.debug("openUrl called via DBus: %1".arg(u))
-            openingArgument = u
+            app.openingArgument = u
             app.handleUrlChange(webviewPage.hydrogenwebview.webView.url, app.openingArgument)
             app.activate()
         }
