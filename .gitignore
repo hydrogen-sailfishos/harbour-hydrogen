@@ -1,4 +1,6 @@
 hydrogen
 *.pro.user
 .idea
+Makefile
+icons/*x*/
 qml/__pycache__

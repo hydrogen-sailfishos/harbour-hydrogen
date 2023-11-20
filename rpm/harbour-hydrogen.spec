@@ -25,6 +25,7 @@ BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(qt5embedwidget)
 BuildRequires:  pkgconfig(sailfishwebengine)
+BuildRequires:  sailfish-svg2png
 BuildRequires:  desktop-file-utils
 
 %description
@@ -73,6 +74,7 @@ desktop-file-install --delete-original       \
 %{_datadir}/applications/%{name}*.desktop
 %{_datadir}/applications/%{name}-open-url.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
+%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 # >> files
 # << files
 
