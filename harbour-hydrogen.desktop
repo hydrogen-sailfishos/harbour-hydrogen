@@ -4,9 +4,10 @@ X-Nemo-Application-Type=silica-qt5
 Icon=harbour-hydrogen
 Exec=sailfish-qml harbour-hydrogen %u
 Name=hydrogen
-MimeType=x-url-handler/matrix.to;x-scheme-handler:matrix;
+MimeType=x-url-handler/matrix.to;x-scheme-handler/matrix;
 X-DBusActivatable=true
 [X-Sailjail]
 Permissions=Internet;UserDirs;RemovableMedia;Audio;MediaIndexing
 OrganizationName=org.github.hydrogen-sailfishos.harbour-hydrogen
 ApplicationName=hydrogen
+ExecDBus=/usr/bin/invoker --type=silica-qt5 --id=harbour-hydrogen --single-instance /usr/bin/sailfish-qml harbour-hydrogen --dbus

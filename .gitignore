@@ -1,3 +1,4 @@
 hydrogen
 *.pro.user
 .idea
+qml/__pycache__
