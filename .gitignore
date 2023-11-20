@@ -3,3 +3,4 @@ hydrogen
 .idea
 Makefile
 icons/*x*/
+qml/__pycache__

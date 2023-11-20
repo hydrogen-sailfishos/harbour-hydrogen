@@ -5,6 +5,7 @@ function getCurrentSession() {
         return matches[1];
     } else {
         var sessions = JSON.parse(localStorage.getItem("hydrogen_sessions_v1"));
+        if (!sessions) return;
         var recent = sessions.sort((x, y) => x.lastUsed - y.lastUsed).pop();
         if (recent) {
             return recent.id;
@@ -24,7 +25,10 @@ function refreshSession() {
     result.onsuccess = function(event) {
         var db = event.target.result;
 
-        var transaction = db.transaction(["roomSummary"]);
+        var transaction = db.transaction("roomSummary", "readonly", "relaxed");
+        var storeNames = Array.from(transaction.objectStoreNames);
+        if (storeNames.indexOf("roomSummary") === -1) return;
+
         var objectStore = transaction.objectStore("roomSummary");
 
         var request = objectStore.getAll();
