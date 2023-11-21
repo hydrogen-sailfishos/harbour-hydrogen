@@ -117,7 +117,7 @@ ApplicationWindow {
 
     // application settings:
     property alias appConfig: appConfig
-    property alias wvConfig: wvConfig
+    property alias wvConfig:  wvConfig
     ConfigurationGroup  {
         id: localSettings
         path: "/org/github/hydrogen-sailfishos"
@@ -126,7 +126,7 @@ ApplicationWindow {
         id: appConfig
         scope: localSettings
         path:  "app"
-        property bool hideNotifications: false
+        property bool showNotifications: true
         property bool stickyNotifications: false
     }
     ConfigurationGroup  {

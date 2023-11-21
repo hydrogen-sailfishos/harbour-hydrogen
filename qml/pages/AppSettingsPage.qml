@@ -23,11 +23,11 @@ Page {
             TextSwitch{ id: notifysw
                 width: parent.width
                 anchors.horizontalCenter: parent.horizontalCenter
-                checked: appConfig.hideNotifications
+                checked: appConfig.showNotifications
                 automaticCheck: true
                 text: qsTr("Show Notifications")
                 //description: qsTr("If enabled, ... .")
-                onClicked: appConfig.hideNotifications = checked
+                onClicked: appConfig.showNotifications = checked
             }
            TextSwitch{
                 enabled: notifysw.checked
@@ -103,7 +103,7 @@ Page {
                 stepSize: 0.5
                 value: wvConfig.memCache ? wvConfig.memCache: -1
                 valueText: (sliderValue === 0)
-                    ? qsTr("automatic");
+                    ? qsTr("automatic")
                     : Math.round(sliderValue * 12.8) + qsTr("MB");
                 onReleased: wvConfig.memCache = Math.round(sliderValue)
             }
