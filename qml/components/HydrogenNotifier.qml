@@ -55,6 +55,23 @@ Item { id: root
         return msgid
     }
 
+    /* Updates Notification contents
+     * uid is the internal uid from the "messages" model
+     * parameters is an object having the updated parameters
+     */
+    function updateNotification(uid, parms) {
+        for (var i = 0; i<messages.count; i++) {
+            var o = messages.get(i);
+            if (o.mid === uid) {
+                // if any of the keys in parms exists in the notification,
+                // update the notification
+                for (k in Object.keys(parms)) {
+                    if (o[k]) { o[k] = parms[k] }
+                }
+            }
+        }
+    }
+
     /* Removes a Notification.
      *
      * looks for the id in the messages model, removes it if found
