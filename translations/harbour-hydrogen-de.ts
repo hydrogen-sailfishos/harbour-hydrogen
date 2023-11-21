@@ -10,7 +10,7 @@
     </message>
     <message>
         <source>Application</source>
-        <translation>Applikation</translation>
+        <translation type="vanished">Applikation</translation>
     </message>
     <message>
         <source>Web View</source>
@@ -47,6 +47,42 @@
     <message>
         <source>Show Notifications</source>
         <translation>Nachrichten anzeigen</translation>
+    </message>
+    <message>
+        <source>Notifications</source>
+        <translation>Benachrichtigungen</translation>
+    </message>
+    <message>
+        <source>Sticky Notifications</source>
+        <translation>Stehende Benachrichtigungen</translation>
+    </message>
+    <message>
+        <source>If enabled, the app will update a single notification (as opposed to sending a new one each time).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restart the App to apply changes to any of the values below.</source>
+        <translation>App neu starten nachdem die Einstellungen unten verändert wurden.</translation>
+    </message>
+    <message>
+        <source>Browser Memory</source>
+        <translation>Browser-Speicher</translation>
+    </message>
+    <message>
+        <source>automatic</source>
+        <translation>automatisch</translation>
+    </message>
+    <message>
+        <source>disabled</source>
+        <translation>ausschalten</translation>
+    </message>
+    <message>
+        <source>MB</source>
+        <translation>MB</translation>
+    </message>
+    <message>
+        <source>Memory Cache</source>
+        <translation>Cache-Speicher</translation>
     </message>
 </context>
 <context>

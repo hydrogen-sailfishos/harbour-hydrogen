@@ -119,7 +119,7 @@ Page {
                 id: memSlider
                 width: parent.width
                 anchors.horizontalCenter: parent.horizontalCenter
-                label: qsTr("Cache Memory")
+                label: qsTr("Memory Cache")
                 minimumValue: 0
                 maximumValue: 11
                 stepSize: 0.5

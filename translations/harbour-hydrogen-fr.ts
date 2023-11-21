@@ -9,10 +9,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Application</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Web View</source>
         <translation type="unfinished"></translation>
     </message>
@@ -46,6 +42,42 @@
     </message>
     <message>
         <source>Show Notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sticky Notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>If enabled, the app will update a single notification (as opposed to sending a new one each time).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restart the App to apply changes to any of the values below.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Browser Memory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>automatic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>disabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>MB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Memory Cache</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
