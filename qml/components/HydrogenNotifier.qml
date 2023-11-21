@@ -131,6 +131,15 @@ Item { id: root
         }
     }
 
+    /*! Removes all Notifications and restarts the factory. */
+    function removeAll() {
+        factory.active = false;
+        messages = ListModel{}
+        factory.countChanged.connect(function() {
+            if (!factory.active && (factory.count == 0)) factory.active = true;
+        }
+    }
+
     Instantiator { id: factory
         asynchronous: true
         delegate: template
