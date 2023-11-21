@@ -74,13 +74,13 @@ Item { id: root
 
     /* Removes a Notification.
      *
-     * looks for the id in the messages model, removes it if found
+     * looks for the uid in the messages model, removes it if found
      * This should destroy the object in the factory, which will delete the message
      */
     function removeNotification(uid) {
         for (var i = 0; i<messages.count; i++) {
             var o = messages.get(i);
-            if (o.mid === uid) messages.remove(i+1,1)
+            if (o.mid === uid) messages.remove(i,1)
         }
     }
 
