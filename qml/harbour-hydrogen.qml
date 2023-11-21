@@ -102,12 +102,12 @@ ApplicationWindow {
             '<interface name="org.github.HydrogenSailfishOS.Hydrogen.ui">',
                '<method name="activate">',
                  '<annotation name="org.freedesktop.DBus.Method.NoReply" value="true" />',
-                 '<annotation name="org.gtk.GDBus.DocString.Short" value="Brings the application forward" />'
+                 '<annotation name="org.gtk.GDBus.DocString.Short" value="Brings the application forward" />',
                '</method>',
                '<method name="openUrl">',
                  '<arg name="url" type="s" direction="in" />',
                  '<annotation name="org.freedesktop.DBus.Method.NoReply" value="true" />',
-                 '<annotation name="org.gtk.GDBus.DocString.Short" value="Loads the url given as argument into the application web view" />'
+                 '<annotation name="org.gtk.GDBus.DocString.Short" value="Loads the url given as argument into the application web view" />',
                '</method>',
              '</interface>'
         ].join('\n')
