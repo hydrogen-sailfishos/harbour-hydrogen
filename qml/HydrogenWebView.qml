@@ -80,30 +80,31 @@ WebViewFlickable {
         }
     }
     function startWebEngine() {
+        // NOTE: Settings are set and saved in prefs.js.
+        //
+        // If you need to disable one of the following settings, you must set
+        // it to default explicitly, not just comment it out.
+
+        // disable CORS
         WebEngineSettings.setPreference(
-                    "security.fileuri.strict_origin_policy", false,
-                    WebEngineSettings.BoolPref)
+            "security.fileuri.strict_origin_policy", false,
+            WebEngineSettings.BoolPref)
+
+        /*** User Settings ***/
+        // Zoom/scale
         WebEngineSettings.pixelRatio        = (wvConfig.zoom*Theme.pixelRatio*10)/10.0
+        // Follow Ambience
         if (wvConfig.ambienceMode) {
-            WebEngineSettings.colorScheme   = WebEngineSettings.FollowsAmbience
+            WebEngineSettings.colorScheme   = wvConfig.ambienceMode
         }
-        if (wvConfig.memCache) {
-            // http://kb.mozillazine.org/Browser.cache.memory.capacity
-            // -1 auto
-            // 0 disable
-            // any positive: mem in KB
-            if (wvConfig.memCache > 0) {
-                // slider has 0 .. 10
-                // slider display shows value * 12.8 in MB
-                var realValue = Math.round(wvConfig.memCache * 12.8 * 1024);
-                WebEngineSettings.setPreference("browser.cache.memory.capacity", realValue, WebEngineSettings.IntPref);
-            } else {
-                WebEngineSettings.setPreference("browser.cache.memory.capacity", -1, WebEngineSettings.IntPref);
-            }
-        }
-
-
+        // Memory Cache
+        const wantCache = (wvConfig.memCache == 11) // automatic -> -1
+            ? -1 // automatic
+            : Math.round(wvConfig.memCache * 12.8 * 1024) // slider display shows value * 12.8 in MB, we want KB
+        console.debug("Setting Mozilla memory cache to", wantCache)
+        WebEngineSettings.setPreference(
+            "browser.cache.memory.capacity", wantCache,
+            WebEngineSettings.IntPref);
     }
 }
-
 

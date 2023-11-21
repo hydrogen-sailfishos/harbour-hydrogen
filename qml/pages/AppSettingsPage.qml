@@ -11,7 +11,7 @@ Page {
         contentHeight: col.height
         Column {
             id: col
-            spacing: Theme.paddingMedium
+            spacing: Theme.paddingLarge
             bottomPadding: Theme.itemSizeLarge
             width: parent.width - Theme.horizontalPageMargin
             PageHeader{ title:  Qt.application.name + " " + qsTr("Settings", "page title") }
@@ -29,7 +29,7 @@ Page {
                 //description: qsTr("If enabled, ... .")
                 onClicked: appConfig.showNotifications = checked
             }
-           TextSwitch{
+            TextSwitch{
                 enabled: notifysw.checked
                 width: parent.width
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -43,6 +43,14 @@ Page {
                 width: parent.width
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("Web View")
+            }
+            Label {
+                width: parent.width - Theme.horizontalPageMargin
+                anchors.horizontalCenter: parent.horizontalCenter
+                //color: Theme.secondaryColor
+                font.pixelSize: Theme.fontSizeSmall
+                wrapMode: Text.Wrap
+                text: qsTr("Restart the App to apply changes to any of the values below.")
             }
             ComboBox{
                 width: parent.width
@@ -81,7 +89,7 @@ Page {
                 color: Theme.secondaryHighlightColor
                 wrapMode: Text.Wrap
             }
-            Slider{
+            Slider {
                 id: zoomSlider
                 width: parent.width
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -93,34 +101,39 @@ Page {
                 valueText: "x" + value
                 onReleased:  { wvConfig.zoom = sliderValue }
             }
-            Slider{
+            Label {
+                anchors {
+                    // align to slider left
+                    left: zoomSlider.left
+                    leftMargin: zoomSlider.leftMargin //+ Theme.paddingLarge
+                    right: zoomSlider.right
+                    rightMargin: zoomSlider.rightMargin //+ Theme.paddingLarge
+                    topMargin: Theme.paddingMedium
+                }
+                text: qsTr("Browser Memory")
+                width: parent.width
+                color: Theme.secondaryHighlightColor
+                wrapMode: Text.Wrap
+            }
+            Slider {
                 id: memSlider
                 width: parent.width
                 anchors.horizontalCenter: parent.horizontalCenter
                 label: qsTr("Cache Memory")
                 minimumValue: 0
-                maximumValue: 10
+                maximumValue: 11
                 stepSize: 0.5
                 value: wvConfig.memCache ? wvConfig.memCache: -1
-                valueText: (sliderValue === 0)
-                    ? qsTr("automatic")
-                    : Math.round(sliderValue * 12.8) + qsTr("MB");
-                onReleased: wvConfig.memCache = Math.round(sliderValue)
-            }
-            Label{
-                anchors {
-                    // align to slider left
-                    left: memSlider.left
-                    leftMargin: memSlider.leftMargin //+ Theme.paddingLarge
-                    right: memSlider.right
-                    rightMargin: memSlider.rightMargin //+ Theme.paddingLarge
-                    topMargin: Theme.paddingMedium
+                valueText: {
+                    if (sliderValue === 11) {
+                        return qsTr("automatic")
+                    } else if (sliderValue === 0) {
+                        return qsTr("disabled")
+                    } else {
+                        Math.round(sliderValue * 12.8) + qsTr("MB");
+                    }
                 }
-                width: parent.width // - Theme.paddingLarge
-                color: Theme.secondaryColor
-                font.pixelSize: Theme.fontSizeExtraSmall
-                wrapMode: Text.Wrap
-                text: qsTr("Restart the App to apply changes to zoom factor or mem cache.")
+                onReleased: wvConfig.memCache = Math.round(sliderValue)
             }
         }
     }

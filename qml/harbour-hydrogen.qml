@@ -134,8 +134,8 @@ ApplicationWindow {
         scope: localSettings
         path:  "webview"
         property double zoom: 1.0
-        property int ambienceMode: WebEngineSettings.FollowsAmbience
-        property int memCache: -1
+        property int ambienceMode: 2 //WebEngineSettings.FollowsAmbience
+        property int memCache: 11 // automatic
     }
 }
 
