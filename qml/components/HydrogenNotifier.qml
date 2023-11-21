@@ -50,7 +50,6 @@ Item { id: root
         // add new thing to model, this should trigger creation of a new
         // notification.
         messages.append({"mid": msgid})
-        console.debug("Appending meddage ID to model:", msgid, "model has now", messages.count, "things.")
         return msgid
 
         /* Set properties and optionally publish
@@ -72,7 +71,6 @@ Item { id: root
                 obj.publish()
                 messagePublished(msgid)
             }
-            console.debug("Factory produced a new thing at index", idx, "short content:", obj.previewBody)
             // disconnect ourselves again.
             factory.objectAdded.disconnect(createNewNotification)
         }
@@ -109,9 +107,7 @@ Item { id: root
                 var n = factory.objectAt(i)
                 console.assert(n, "BUG: retrieved an invalid object from factory.")
                 var keys = Object.keys(parms)
-                console.debug("Updating notification with id", uid, "changing:", keys)
                 keys.forEach(function(k) {
-                    console.debug("Changing", k, "currently",  n[k], "to", parms[k])
                     if (n[k]) { n[k] = parms[k] }
                 })
                 // update published notification:
