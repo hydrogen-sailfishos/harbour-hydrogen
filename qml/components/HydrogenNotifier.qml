@@ -46,6 +46,9 @@ Item { id: root
             if (message)        obj.body           = message
             if (shortMessage)   obj.previewBody    = shortMessage
             if (count)          obj.itemCount      = count
+            // store our id for sending back on notification click
+            obj.internalId = msgid
+
             obj.publish()
         })
         messages.append({"mid": msgid})
@@ -76,6 +79,7 @@ Item { id: root
     }
 
     Component { id: template; Notification {
+         property string internalId
          category: "im.received"
          appName: qsTr("Hydrogen")
          appIcon: "image://theme/harbour-hydrogen"
@@ -93,7 +97,7 @@ Item { id: root
              "path":     "/hydrogen/ui",
              "iface":    "org.github.HydrogenSailfishOS.Hydrogen.ui",
              "method":    "fromNotification",
-             "arguments": [ "id", replacesId ]
+             "arguments": [ internalId, replacesId ]
          } ]
          onClicked: console.log("Clicked")
          onClosed: console.log("Closed, reason: " + reason)
