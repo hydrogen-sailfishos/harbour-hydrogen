@@ -29,7 +29,7 @@ ApplicationWindow {
                 coverMessage = msgs
             }
     */
-    property var coverMessages: [] 
+    property var coverMessages: []
     property string coverTitle: "" // e.g. qsTr("New Messages")
 
     Python {
@@ -133,7 +133,7 @@ ApplicationWindow {
         id: wvConfig
         scope: localSettings
         path:  "webview"
-        property double zoom: 1.0
+        property double zoom: 2.0
         property int ambienceMode: 2 //WebEngineSettings.FollowsAmbience
         property int memCache: 11 // automatic
     }
