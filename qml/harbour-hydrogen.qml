@@ -3,6 +3,7 @@ import Sailfish.Silica 1.0
 import Sailfish.WebView 1.0
 import Sailfish.WebEngine 1.0
 import Nemo.DBus 2.0
+import Nemo.Configuration 1.0
 import io.thp.pyotherside 1.5
 import "cover"
 
@@ -28,7 +29,7 @@ ApplicationWindow {
                 coverMessage = msgs
             }
     */
-    property var coverMessages: [] 
+    property var coverMessages: []
     property string coverTitle: "" // e.g. qsTr("New Messages")
 
     Python {
@@ -113,4 +114,29 @@ ApplicationWindow {
             console.info("Unregistering D-Bus service %1".arg(service) )
         }
     }
+
+    // application settings:
+    property alias appConfig: appConfig
+    property alias wvConfig:  wvConfig
+    ConfigurationGroup  {
+        id: localSettings
+        path: "/org/github/hydrogen-sailfishos"
+    }
+    ConfigurationGroup  {
+        id: appConfig
+        scope: localSettings
+        path:  "app"
+        property bool showNotifications: true
+        property bool stickyNotifications: false
+    }
+    ConfigurationGroup  {
+        id: wvConfig
+        scope: localSettings
+        path:  "webview"
+        property double zoom: 2.0
+        property int ambienceMode: 2 //WebEngineSettings.FollowsAmbience
+        property int memCache: 11 // automatic
+    }
 }
+
+// vim: ft=javascript expandtab ts=4 sw=4 st=4

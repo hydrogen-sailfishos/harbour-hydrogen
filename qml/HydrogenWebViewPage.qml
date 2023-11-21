@@ -13,7 +13,11 @@ WebViewPage {
 
         PullDownMenu {
             MenuItem{
-                text: qsTr('Settings')
+                text: qsTr('App Settings')
+                onClicked: pageStack.push(Qt.resolvedUrl("pages/AppSettingsPage.qml"))
+            }
+            MenuItem{
+                text: qsTr('Hydrogen Settings')
                 onClicked: hydrogenwebview.enterSettingsView()
             }
         }

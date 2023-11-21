@@ -31,6 +31,9 @@ WebViewFlickable {
             }
         }
     }
+    Component.onCompleted: {
+        startWebEngine()
+    }
 
     webView {
         id: webview
@@ -76,6 +79,32 @@ WebViewFlickable {
             }
         }
     }
-}
+    function startWebEngine() {
+        // NOTE: Settings are set and saved in prefs.js.
+        //
+        // If you need to disable one of the following settings, you must set
+        // it to default explicitly, not just comment it out.
 
+        // disable CORS
+        WebEngineSettings.setPreference(
+            "security.fileuri.strict_origin_policy", false,
+            WebEngineSettings.BoolPref)
+
+        /*** User Settings ***/
+        // Zoom/scale
+        WebEngineSettings.pixelRatio        = (wvConfig.zoom*Theme.pixelRatio*10)/10.0
+        // Follow Ambience
+        if (wvConfig.ambienceMode) {
+            WebEngineSettings.colorScheme   = wvConfig.ambienceMode
+        }
+        // Memory Cache
+        const wantCache = (wvConfig.memCache == 11) // automatic -> -1
+            ? -1 // automatic
+            : Math.round(wvConfig.memCache * 12.8 * 1024) // slider display shows value * 12.8 in MB, we want KB
+        console.debug("Setting Mozilla memory cache to", wantCache)
+        WebEngineSettings.setPreference(
+            "browser.cache.memory.capacity", wantCache,
+            WebEngineSettings.IntPref);
+    }
+}
 
