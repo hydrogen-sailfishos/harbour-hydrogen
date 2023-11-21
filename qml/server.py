@@ -1,7 +1,7 @@
-// Copyright © 2021-2023 thigg
-// Copyright © 2023 The SailfishOS Hackathon Budapest Team
-//
-// SPDX-License-Identifier: Apache-2.0
+# Copyright © 2021-2023 thigg
+# Copyright © 2023 The SailfishOS Hackathon Budapest Team
+#
+# SPDX-License-Identifier: Apache-2.0
 
 import pyotherside
 import threading
