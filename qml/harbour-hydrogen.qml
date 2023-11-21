@@ -115,21 +115,27 @@ ApplicationWindow {
         }
     }
 
-    property alias zoom: localConfig.zoom
-    property alias ambienceMode: localConfig.ambienceMode
-    property alias hideNotifications: localConfig.hideNotifications
     // application settings:
+    property alias appConfig: appConfig
+    property alias wvConfig: wvConfig
     ConfigurationGroup  {
         id: localSettings
         path: "/org/github/hydrogen-sailfishos"
     }
     ConfigurationGroup  {
-        id: localConfig
+        id: appConfig
         scope: localSettings
         path:  "app"
+        property bool hideNotifications: false
+        property bool stickyNotifications: false
+    }
+    ConfigurationGroup  {
+        id: wvConfig
+        scope: localSettings
+        path:  "webview"
         property double zoom: 1.0
         property int ambienceMode: WebEngineSettings.FollowsAmbience
-        property bool hideNotifications: false
+        property int memCache: -1
     }
 }
 

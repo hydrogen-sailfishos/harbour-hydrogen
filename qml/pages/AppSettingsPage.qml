@@ -18,16 +18,26 @@ Page {
             SectionHeader {
                 width: parent.width
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: qsTr("Application")
+                text: qsTr("Notifications")
             }
-            TextSwitch{
+            TextSwitch{ id: notifysw
                 width: parent.width
                 anchors.horizontalCenter: parent.horizontalCenter
-                checked: app.hideNotifications
+                checked: appConfig.hideNotifications
                 automaticCheck: true
                 text: qsTr("Show Notifications")
                 //description: qsTr("If enabled, ... .")
-                onClicked: app.hideNotifications = checked
+                onClicked: appConfig.hideNotifications = checked
+            }
+           TextSwitch{
+                enabled: notifysw.checked
+                width: parent.width
+                anchors.horizontalCenter: parent.horizontalCenter
+                checked: appConfig.stickyNotifications
+                automaticCheck: true
+                text: qsTr("Sticky Notifications")
+                description: qsTr("If enabled, the app will update a single notification (as opposed to sending a new one each time).")
+                onClicked: appConfig.stickyNotifications = checked
             }
             SectionHeader {
                 width: parent.width
@@ -48,11 +58,11 @@ Page {
                 onCurrentIndexChanged: {
                     if (!ready) return
                     if( currentIndex >=0 ) {
-                        app.ambienceMode = currentIndex
+                        wvConfig.ambienceMode = currentIndex
                     }
                 }
                 Component.onCompleted: {
-                    if (app.ambienceMode) currentIndex = app.ambienceMode
+                    if (wvConfig.ambienceMode) currentIndex = wvConfig.ambienceMode
                     ready = true
                 }
 
@@ -79,11 +89,10 @@ Page {
                 minimumValue: 0.8
                 maximumValue: 4.3
                 stepSize: 0.2
-                value: app.zoom
+                value: wvConfig.zoom
                 valueText: "x" + value
-                onReleased:  { app.zoom = sliderValue }
+                onReleased:  { wvConfig.zoom = sliderValue }
             }
-            /*
             Slider{
                 id: memSlider
                 width: parent.width
@@ -92,15 +101,11 @@ Page {
                 minimumValue: 0
                 maximumValue: 10
                 stepSize: 0.5
-                value: app.memCache ? app.memCache: -1
-                valueText: {
-                    if (sliderValue === 0) {
-                        return qsTr("automatic");
-                    } else {
-                        return Math.round(sliderValue * 12.8) + qsTr("MB");
-                    }
-                }
-                onReleased: app.memCache = Math.round(sliderValue)
+                value: wvConfig.memCache ? wvConfig.memCache: -1
+                valueText: (sliderValue === 0)
+                    ? qsTr("automatic");
+                    : Math.round(sliderValue * 12.8) + qsTr("MB");
+                onReleased: wvConfig.memCache = Math.round(sliderValue)
             }
             Label{
                 anchors {
@@ -117,7 +122,6 @@ Page {
                 wrapMode: Text.Wrap
                 text: qsTr("Restart the App to apply changes to zoom factor or mem cache.")
             }
-            */
         }
     }
 }
