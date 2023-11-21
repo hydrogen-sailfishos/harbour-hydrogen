@@ -26,7 +26,7 @@ WebViewFlickable {
             when: virtualKeyboardObserver.opened && webview.enabled
             PropertyChanges {
                 target: webview
-                viewportHeight: isLandscape ? Screen.height - virtualKeyboardObserver.imSize
+                viewportHeight: isPortrait ? Screen.height - virtualKeyboardObserver.imSize
                                             : Screen.width - Qt.inputMethod.keyboardRectangle.width
             }
         }
