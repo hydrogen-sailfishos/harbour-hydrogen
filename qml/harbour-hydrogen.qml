@@ -114,10 +114,6 @@ ApplicationWindow {
         function fromNotification(id) {
             console.debug("fromNotification called via DBus: %1".arg(id))
         }
-        /* internal function: called on Notification click in Event View */
-        function fromNotification(id) {
-            console.debug("fromNotification called via DBus: %1".arg(id))
-        }
         Component.onCompleted: {
             console.info("Registered D-Bus service %1".arg(service) )
             console.info("Registered D-Bus interface %1".arg(iface) )
