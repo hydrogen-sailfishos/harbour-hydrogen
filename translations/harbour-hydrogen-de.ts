@@ -44,6 +44,10 @@
         <source>Page Zoom factor</source>
         <translation>Vergrößerungsfaktor</translation>
     </message>
+    <message>
+        <source>Show Notifications</source>
+        <translation>Nachrichten anzeigen</translation>
+    </message>
 </context>
 <context>
     <name>HydrogenCover</name>

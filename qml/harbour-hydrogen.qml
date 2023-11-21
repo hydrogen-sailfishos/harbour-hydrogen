@@ -117,7 +117,7 @@ ApplicationWindow {
 
     property alias zoom: localConfig.zoom
     property alias ambienceMode: localConfig.ambienceMode
-
+    property alias hideNotifications: localConfig.hideNotifications
     // application settings:
     ConfigurationGroup  {
         id: localSettings
@@ -129,6 +129,7 @@ ApplicationWindow {
         path:  "app"
         property double zoom: 1.0
         property int ambienceMode: WebEngineSettings.FollowsAmbience
+        property bool hideNotifications: false
     }
 }
 

@@ -44,6 +44,10 @@
         <source>Page Zoom factor</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Show Notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>HydrogenCover</name>

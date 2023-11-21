@@ -20,17 +20,15 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("Application")
             }
-            /*
             TextSwitch{
                 width: parent.width
                 anchors.horizontalCenter: parent.horizontalCenter
-                checked: app.hideui
+                checked: app.hideNotifications
                 automaticCheck: true
-                text: qsTr("Hide UI in landscape mode")
-                description: qsTr("If enabled, the top and bottom bars are hidden in landscape mode.")
-                onClicked: app.hideui = checked
+                text: qsTr("Show Notifications")
+                //description: qsTr("If enabled, ... .")
+                onClicked: app.hideNotifications = checked
             }
-            */
             SectionHeader {
                 width: parent.width
                 anchors.horizontalCenter: parent.horizontalCenter
