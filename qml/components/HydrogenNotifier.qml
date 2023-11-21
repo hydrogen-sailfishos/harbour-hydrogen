@@ -107,14 +107,23 @@ Item { id: root
          //itemCount: 5
          //timestamp: "2013-02-20 18:21:00"
          remoteActions: [ {
-             "name": "default",
+             // invoked when the user clicks the notification item
+             "name":     "default",
              "displayName": qsTr("Open Conversation"),
-             "icon": "icon-lock-chat",
+             "icon":     "icon-lock-chat",
              "service":  "org.github.hydrogen-sailfishos.harbour-hydrogen.hydrogen",
              "path":     "/hydrogen/ui",
              "iface":    "org.github.HydrogenSailfishOS.Hydrogen.ui",
-             "method":    "fromNotification",
+             "method":   "fromNotification",
              "arguments": [ internalId, replacesId ]
+         },
+         {
+             // invoked when the user clicks the app notification group
+             "name": "app",
+             "service":  "org.github.hydrogen-sailfishos.harbour-hydrogen.hydrogen",
+             "path":     "/hydrogen/ui",
+             "iface":    "org.github.HydrogenSailfishOS.Hydrogen.ui",
+             "method":   "activate",
          } ]
          onClicked: console.log("Clicked")
          onClosed: console.log("Closed, reason: " + reason)

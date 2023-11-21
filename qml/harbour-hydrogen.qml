@@ -98,11 +98,19 @@ ApplicationWindow {
         path: '/hydrogen/ui'
         // NB: DBus does not allow hyphens in interface names:
         iface: 'org.github.HydrogenSailfishOS.Hydrogen.ui'
-        xml: '<interface name="org.github.HydrogenSailfishOS.Hydrogen.ui">
-               <method name="openUrl">
-                 <arg name="url" type="s" direction="in"/>
-               </method>
-             </interface>'
+        xml: [
+            '<interface name="org.github.HydrogenSailfishOS.Hydrogen.ui">',
+               '<method name="activate">',
+                 '<annotation name="org.freedesktop.DBus.Method.NoReply" value="true" />',
+                 '<annotation name="org.gtk.GDBus.DocString.Short" value="Brings the application forward" />'
+               '</method>',
+               '<method name="openUrl">',
+                 '<arg name="url" type="s" direction="in" />',
+                 '<annotation name="org.freedesktop.DBus.Method.NoReply" value="true" />',
+                 '<annotation name="org.gtk.GDBus.DocString.Short" value="Loads the url given as argument into the application web view" />'
+               '</method>',
+             '</interface>'
+        ].join('\n')
 
         function openUrl(u) {
             console.debug("openUrl called via DBus: %1".arg(u))
@@ -113,6 +121,18 @@ ApplicationWindow {
         /* internal function: called on Notification click in Event View */
         function fromNotification(uid, mid) {
             console.debug("fromNotification called via DBus: %1".arg([uid, mid].join()))
+        }
+        /* internal function: called on Notification group click in Event View
+         *
+         * NB: By the FDO spec, we should be handling an action called "Open" or "Activate".
+         * Due to QML function names only supporting lower-case names though, we can't.
+         *
+         * See https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html#dbus
+         * https://docs.sailfishos.org/Reference/Core_Areas_and_APIs/Apps_and_MW/Lipstick/Launchers/#d-bus-activation
+         */
+        function activate() {
+            console.debug("activate called via DBus.")
+            app.activate()
         }
         Component.onCompleted: {
             console.info("Registered D-Bus service %1".arg(service) )
