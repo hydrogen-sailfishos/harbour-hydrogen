@@ -1,3 +1,8 @@
+// Copyright © 2021-2023 thigg
+// Copyright © 2023 The SailfishOS Hackathon Budapest Team
+//
+// SPDX-License-Identifier: Apache-2.0
+
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import Sailfish.Silica.private 1.0 as Private

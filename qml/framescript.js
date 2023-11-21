@@ -1,3 +1,8 @@
+// Copyright © 2021-2023 thigg
+// Copyright © 2023 The SailfishOS Hackathon Budapest Team
+//
+// SPDX-License-Identifier: Apache-2.0
+
 addEventListener("DOMContentLoaded", function (aEvent) {
     aEvent.originalTarget.addEventListener("framescript:log",
                                            function (aEvent) {
