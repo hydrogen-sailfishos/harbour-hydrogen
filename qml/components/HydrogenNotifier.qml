@@ -179,4 +179,54 @@ Item { id: root
          onClicked: console.log("Clicked")
          onClosed: console.log("Closed, reason: " + reason)
      }}
+
+    /* ########## Internal testing stuff below ############# */
+
+    function runTests() { testItem.runTests() }
+    Item{ id: testItem
+        function runTests() {
+            var uid = Qt.md5(Math.random())
+            console.debug("Notification test started")
+            notifier.quickNumberedNotification( "Test Numbered Message", Math.floor(Math.random() * 25));
+            notifier.quickNotification( "Quick Test" )
+            notifier.addNotification( "Short Title", "Short Message",
+                "Added Title", "Added Message",
+                undefined,
+                uid,
+                false)
+            testTimer.uid = uid
+            testTimer.start()
+        }
+        Timer { id: testTimer
+            property string uid
+            repeat: false
+            onTriggered: {
+                console.debug("Notification test timer fired")
+                notifier.updateNotification(uid, {
+                    "summary":          "Updated Notification summary",
+                    "body":             "Updated Notification body",
+                    "previewSummary":   "Updated Notification preview summary",
+                    "previewBody":      "Updated Notification preview body",
+                })
+                uid = Qt.md5(Math.random())
+                // hold notification:
+                notifier.addNotification( "Hold Short Title", "Hold Short Message",
+                    "Hold Title", "Hold Message",
+                    undefined,
+                    uid,
+                    true)
+            testTimer2.uid = uid
+            testTimer2.start()
+            }
+        }
+        Timer { id: testTimer2
+            property string uid
+            interval: 2000
+            repeat: false
+            onTriggered: {
+                console.debug("Notification test timer 2 fired")
+                notifier.publishNotification(uid)
+            }
+        }
+    }
 }
