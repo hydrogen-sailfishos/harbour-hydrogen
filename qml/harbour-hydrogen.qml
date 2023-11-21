@@ -1,5 +1,5 @@
 // Copyright © 2021-2023 thigg
-// Copyright © 2023 The SailfishOS Hackathon Budapest Team
+// Copyright © 2023 The SailfishOS Hackathon Bucharest Team
 //
 // SPDX-License-Identifier: Apache-2.0
 
@@ -33,7 +33,7 @@ ApplicationWindow {
                 coverMessage = msgs
             }
     */
-    property var coverMessages: [] 
+    property var coverMessages: []
     property string coverTitle: "" // e.g. qsTr("New Messages")
 
     Python {
