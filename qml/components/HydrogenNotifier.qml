@@ -137,7 +137,7 @@ Item { id: root
         messages.clear();
         factory.countChanged.connect(function() {
             if (!factory.active && (factory.count == 0)) factory.active = true;
-        }
+        })
     }
 
     Instantiator { id: factory
