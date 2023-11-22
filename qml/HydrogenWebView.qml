@@ -16,6 +16,8 @@ WebViewFlickable {
         webview.url = settingsURL
     }
 
+    quickScroll: false
+    flickableDirection: Flickable.VerticalFlick
     PullDownMenu {
         MenuItem{
             text: qsTr('App Settings')
