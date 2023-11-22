@@ -10,17 +10,5 @@ WebViewPage {
     HydrogenWebView {
         id: hydrogenwebview
         anchors.fill: parent
-
-        PullDownMenu {
-            MenuItem{
-                text: qsTr('App Settings')
-                onClicked: pageStack.push(Qt.resolvedUrl("pages/AppSettingsPage.qml"))
-            }
-            MenuItem{
-                text: qsTr('Hydrogen Settings')
-                onClicked: hydrogenwebview.enterSettingsView()
-            }
-        }
-
     }
 }

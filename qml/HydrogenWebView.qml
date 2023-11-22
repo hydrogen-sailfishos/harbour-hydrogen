@@ -16,6 +16,17 @@ WebViewFlickable {
         webview.url = settingsURL
     }
 
+    PullDownMenu {
+        MenuItem{
+            text: qsTr('App Settings')
+            onClicked: pageStack.push(Qt.resolvedUrl("pages/AppSettingsPage.qml"))
+        }
+        MenuItem{
+            text: qsTr('Hydrogen Settings')
+            onClicked: enterSettingsView()
+        }
+    }
+
     Private.VirtualKeyboardObserver {
         id: virtualKeyboardObserver
         active: webview.enabled
