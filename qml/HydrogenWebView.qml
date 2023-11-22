@@ -19,12 +19,17 @@ WebViewFlickable {
     quickScroll: false
     flickableDirection: Flickable.VerticalFlick
     PullDownMenu {
-        visible: app.isMenuEnabled
+        property bool visibility: app.isMenuEnabled
+
+        onVisibilityChanged: {
+            hydrogenSettings.enabled = visibility
+        }
         MenuItem{
             text: qsTr('App Settings')
             onClicked: pageStack.push(Qt.resolvedUrl("pages/AppSettingsPage.qml"))
         }
         MenuItem{
+            id: hydrogenSettings
             text: qsTr('Hydrogen Settings')
             onClicked: enterSettingsView()
         }

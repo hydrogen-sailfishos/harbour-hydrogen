@@ -86,6 +86,8 @@ ApplicationWindow {
             if (pageName === null || pageName === 'settings') {
                 app.isMenuEnabled = false
             }
+        } else {
+            app.isMenuEnabled = false
         }
     }
 
