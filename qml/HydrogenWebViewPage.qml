@@ -11,4 +11,10 @@ WebViewPage {
         id: hydrogenwebview
         anchors.fill: parent
     }
+    BusyLabel {
+        running: !hydrogenwebview.webView.loaded
+        text: qsTr("Loading Application")
+        // break binding after first load:
+        onRunningChanged: { if (hydrogenwebview.webView.loaded) running = false }
+    }
 }
