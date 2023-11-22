@@ -19,7 +19,7 @@ WebViewFlickable {
     quickScroll: false
     flickableDirection: Flickable.VerticalFlick
     PullDownMenu {
-        visible: app.isMenuEnable
+        visible: app.isMenuEnabled
         MenuItem{
             text: qsTr('App Settings')
             onClicked: pageStack.push(Qt.resolvedUrl("pages/AppSettingsPage.qml"))

@@ -14,7 +14,7 @@ ApplicationWindow {
     allowedOrientations: Orientation.All
     property int notificationCount: 0
     property var openingArgument
-    property bool isMenuEnable: true
+    property bool isMenuEnabled: true
     onNotificationCountChanged: {
         console.log("Updated notification count")
     }
@@ -75,8 +75,7 @@ ApplicationWindow {
         var invit = cleanInvitation(link)
         var sessionURL = getSessionURL(url)
         if (sessionURL) {
-            console.log('test ' + pageName)
-            app.isMenuEnable = true
+            app.isMenuEnabled = true
             if (invit) {
                 var invitURL = sessionURL + '/room/' + invit
                 if (webviewPage.hydrogenwebview.webView.url != invitURL) {
@@ -85,7 +84,7 @@ ApplicationWindow {
                 }
             }
             if (pageName === null || pageName === 'settings') {
-                app.isMenuEnable = false
+                app.isMenuEnabled = false
             }
         }
     }
