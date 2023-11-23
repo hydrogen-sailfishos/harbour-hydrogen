@@ -36,21 +36,6 @@ WebViewFlickable {
         }
     }
 
-    Private.VirtualKeyboardObserver {
-        id: virtualKeyboardObserver
-        active: webview.enabled
-
-        // Update content height only after virtual keyboard fully opened.
-        states: State {
-            name: "boundHeightControl"
-            when: virtualKeyboardObserver.opened && webview.enabled
-            PropertyChanges {
-                target: webview
-                viewportHeight: isPortrait ? Screen.height - virtualKeyboardObserver.imSize
-                                            : Screen.width - Qt.inputMethod.keyboardRectangle.width
-            }
-        }
-    }
     Component.onCompleted: {
         startWebEngine()
     }
@@ -58,6 +43,8 @@ WebViewFlickable {
     webView {
         id: webview
         anchors.fill: parent
+        viewportHeight: isPortrait ? Screen.height - virtualKeyboardMargin
+            : Screen.width - virtualKeyboardMargin
         onViewInitialized: {
             console.log("loading framescript")
             webview.loadFrameScript(Qt.resolvedUrl("framescript.js"))
