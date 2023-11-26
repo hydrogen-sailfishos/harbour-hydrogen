@@ -24,11 +24,6 @@ WebViewFlickable {
     quickScroll: false
     flickableDirection: Flickable.VerticalFlick
     PullDownMenu {
-        property bool visibility: app.isMenuEnabled
-
-        onVisibilityChanged: {
-            hydrogenSettings.enabled = visibility
-        }
         // Disable when in a room
         enabled: ! /\/room\/[^/]+$/.test(webview.url.toString())
         MenuItem{
@@ -36,7 +31,7 @@ WebViewFlickable {
             onClicked: pageStack.push(Qt.resolvedUrl("pages/AppSettingsPage.qml"))
         }
         MenuItem{
-            id: hydrogenSettings
+            enabled: app.isSettingsAvailable
             text: qsTr('Hydrogen Settings')
             onClicked: enterSettingsView()
         }

@@ -19,7 +19,7 @@ ApplicationWindow {
     allowedOrientations: Orientation.All
     property int notificationCount: 0
     property var openingArgument
-    property bool isMenuEnabled: true
+    property bool isSettingsAvailable: true
     onNotificationCountChanged: {
         console.log("Updated notification count")
     }
@@ -80,7 +80,7 @@ ApplicationWindow {
         var invit = cleanInvitation(link)
         var sessionURL = getSessionURL(url)
         if (sessionURL) {
-            app.isMenuEnabled = true
+            app.isSettingsAvailable = true
             if (invit) {
                 var invitURL = sessionURL + '/room/' + invit
                 if (webviewPage.hydrogenwebview.webView.url != invitURL) {
@@ -89,10 +89,10 @@ ApplicationWindow {
                 }
             }
             if (pageName === null || pageName === 'settings') {
-                app.isMenuEnabled = false
+                app.isSettingsAvailable = false
             }
         } else {
-            app.isMenuEnabled = false
+            app.isSettingsAvailable = false
         }
     }
 
