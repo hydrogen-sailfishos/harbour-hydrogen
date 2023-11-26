@@ -12,6 +12,11 @@ CoverBackground {
     //readonly property color secondaryHylightColor: Theme.secondaryHighlightFromColor(hyColor, Theme.ColorScheme)
     //readonly property color dimmerHylightColor:    Theme.highlightDimmerFromColor(hyColor, Theme.ColorScheme)
     readonly property color logoColor:             Theme.rgba(hyColor, Theme.OpacityFaint)
+
+    Connections {
+        target: app
+        onCoverMessagesChanged: messageView.model = app.coverMessages
+    }
     Icon {
         z: -1
         source: Qt.resolvedUrl("./hydrogen.svg" + "?" + logoColor)
@@ -38,14 +43,15 @@ CoverBackground {
         text: app.coverTitle
         width: parent.width - Theme.horizontalPageMargin
         x: Theme.horizontalPageMargin
-        y: Theme.paddingMedium
+        //y: Theme.paddingMedium
+        anchors.top: label.bottom
         font.pixelSize: Theme.fontSizeExtraSmall
         color: Theme.highlightColor
         wrapMode: Text.Wrap
     }
     ColumnView { id: messageView
-        width: parent.width - Theme.horizontalPageMargin
         x: Theme.horizontalPageMargin
+        width: parent.width - Theme.horizontalPageMargin
         height: parent.height - coverAction.height
         anchors.top: titleLabel.bottom
         anchors.horizontalCenter: parent.horizontalCenter
@@ -54,7 +60,6 @@ CoverBackground {
         Behavior on opacity { FadeAnimator { } }
 
         itemHeight: Theme.itemSizeSmall/2
-        model: app.coverMessages ? app.coverMessages : null
         delegate: Label {
             text: modelData
             font.pixelSize: Theme.fontSizeTiny*0.8
@@ -66,5 +71,14 @@ CoverBackground {
 
     CoverActionList {
         id: coverAction
+        CoverAction {
+            iconSource: "image://theme/icom-cover-sync"
+        }
+        CoverAction {
+            iconSource: "image://theme/icom-cover-message"
+        }
+        CoverAction {
+            iconSource: "image://theme/icom-cover-new"
+        }
     }
 }
