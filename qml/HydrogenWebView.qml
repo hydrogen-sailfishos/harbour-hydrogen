@@ -25,7 +25,7 @@ WebViewFlickable {
     flickableDirection: Flickable.VerticalFlick
     PullDownMenu {
         // Disable when in a room
-        enabled: ! /\/room\/[^/]+$/.test(webview.url.toString())
+        visible: ! /\/room\/[^/]+$/.test(webview.url.toString())
         MenuItem{
             text: qsTr('App Settings')
             onClicked: pageStack.push(Qt.resolvedUrl("pages/AppSettingsPage.qml"))
