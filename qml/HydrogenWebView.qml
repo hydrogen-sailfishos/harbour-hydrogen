@@ -1,3 +1,8 @@
+// Copyright © 2021-2023 Thilo Kogge (thigg)
+// Copyright © 2023 The SailfishOS Hackathon Bucharest Team
+//
+// SPDX-License-Identifier: Apache-2.0
+
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import Sailfish.Silica.private 1.0 as Private
@@ -24,6 +29,8 @@ WebViewFlickable {
         onVisibilityChanged: {
             hydrogenSettings.enabled = visibility
         }
+        // Disable when in a room
+        enabled: ! /\/room\/[^/]+$/.test(webview.url.toString())
         MenuItem{
             text: qsTr('App Settings')
             onClicked: pageStack.push(Qt.resolvedUrl("pages/AppSettingsPage.qml"))

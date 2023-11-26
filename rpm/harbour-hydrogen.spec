@@ -12,7 +12,7 @@ Summary:    hydrogen, a matrix client
 Version:    0.4.1
 Release:    1
 Group:      Qt/Qt
-License:    LICENSE
+License:    ASL 2.0
 BuildArch:  noarch
 URL:        https://github.com/thigg/sfos-hydrogen
 Source0:    %{name}-%{version}.tar.bz2
