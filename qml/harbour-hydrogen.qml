@@ -19,6 +19,7 @@ ApplicationWindow {
     allowedOrientations: Orientation.All
     property int notificationCount: 0
     property var openingArgument
+    property bool isSettingsAvailable: true
     onNotificationCountChanged: {
         console.log("Updated notification count")
     }
@@ -75,14 +76,23 @@ ApplicationWindow {
     }
 
     function handleUrlChange(url, link) {
+        var pageName = url.toString().split('/')[6]
         var invit = cleanInvitation(link)
         var sessionURL = getSessionURL(url)
-        if (invit && sessionURL) {
-            var invitURL = sessionURL + '/room/' + invit
-            if (webviewPage.hydrogenwebview.webView.url != invitURL) {
-                webviewPage.hydrogenwebview.webView.url = invitURL
-                app.openingArgument = null
+        if (sessionURL) {
+            app.isSettingsAvailable = true
+            if (invit) {
+                var invitURL = sessionURL + '/room/' + invit
+                if (webviewPage.hydrogenwebview.webView.url != invitURL) {
+                    webviewPage.hydrogenwebview.webView.url = invitURL
+                    app.openingArgument = null
+                }
             }
+            if (pageName === null || pageName === 'settings') {
+                app.isSettingsAvailable = false
+            }
+        } else {
+            app.isSettingsAvailable = false
         }
     }
 

@@ -31,6 +31,7 @@ WebViewFlickable {
             onClicked: pageStack.push(Qt.resolvedUrl("pages/AppSettingsPage.qml"))
         }
         MenuItem{
+            enabled: app.isSettingsAvailable
             text: qsTr('Hydrogen Settings')
             onClicked: enterSettingsView()
         }
