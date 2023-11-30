@@ -14,9 +14,9 @@ Release:    1
 Group:      Qt/Qt
 License:    ASL 2.0
 BuildArch:  noarch
-URL:        https://github.com/thigg/sfos-hydrogen
+URL:        https://github.com/harbour-sailfishos/sfos-hydrogen
 Source0:    %{name}-%{version}.tar.bz2
-Source1:    release.zip
+Source1:    release-sfos%{version}-%{release}.zip
 Requires:   sailfishsilica-qt5 >= 0.10.9
 Requires:   sailfish-components-webview-qt5
 BuildRequires:  pkgconfig(sailfishapp) >= 1.0.3
@@ -34,7 +34,16 @@ Short description of my Sailfish OS Application
 
 %prep
 %setup -q -n %{name}-%{version}
-pushd hydrogen && unzip %{SOURCE1} && popd
+%if 0%{?sailfishos_version}
+pushd hydrogen
+if [ ! -f ../release-sfos%{version}-%{release}.zip ]
+then
+  echo "Missing release-sfos%{version}-%{release}.zip"
+  exit 1
+fi
+unzip ../release-sfos%{version}-%{release}.zip
+popd
+%endif
 
 # >> setup
 # << setup
