@@ -9,14 +9,14 @@ Name:       harbour-hydrogen
 # << macros
 
 Summary:    hydrogen, a matrix client
-Version:    0.4.1
+Version:    0.4.1-sfos
 Release:    1
 Group:      Qt/Qt
 License:    ASL 2.0
 BuildArch:  noarch
-URL:        https://github.com/thigg/sfos-hydrogen
+URL:        https://github.com/harbour-sailfishos/sfos-hydrogen
 Source0:    %{name}-%{version}.tar.bz2
-Source1:    release.zip
+Source1:    release-%{version}.zip
 Requires:   sailfishsilica-qt5 >= 0.10.9
 Requires:   sailfish-components-webview-qt5
 BuildRequires:  pkgconfig(sailfishapp) >= 1.0.3
@@ -27,7 +27,6 @@ BuildRequires:  pkgconfig(qt5embedwidget)
 BuildRequires:  pkgconfig(sailfishwebengine)
 BuildRequires:  sailfish-svg2png
 BuildRequires:  desktop-file-utils
-BuildRequires:  git
 
 %description
 Short description of my Sailfish OS Application
@@ -36,13 +35,12 @@ Short description of my Sailfish OS Application
 %prep
 %setup -q -n %{name}-%{version}
 pushd hydrogen
-HYDROGEN_TAG=$(git describe --tags)
-if [ ! -f ../release-$HYDROGEN_TAG.zip ]
+if [ ! -f ../release-%{version}.zip ]
 then
-  echo "Missing release-$HYDROGEN_TAG.zip
+  echo "Missing release-%{version}.zip
   exit 1
 fi
-unzip ../release-$HYDROGEN_TAG.zip
+unzip ../release-%{version}.zip
 popd
 
 # >> setup
