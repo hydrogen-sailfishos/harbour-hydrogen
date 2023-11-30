@@ -6,6 +6,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import Sailfish.WebView 1.0
+import "hydrogenfacts.js" as Fact
 
 WebViewPage {
     property string url
@@ -15,5 +16,11 @@ WebViewPage {
     HydrogenWebView {
         id: hydrogenwebview
         anchors.fill: parent
+    }
+    BusyLabel {
+        running: !hydrogenwebview.webView.loaded
+        // break binding after first load:
+        onRunningChanged: { if (hydrogenwebview.webView.loaded) running = false }
+        Component.onCompleted: text = Fact.get()
     }
 }
