@@ -10,7 +10,7 @@ Name:       harbour-hydrogen
 
 Summary:    hydrogen, a matrix client
 Version:    0.4.1
-Release:    sfos.1
+Release:    1
 Group:      Qt/Qt
 License:    ASL 2.0
 BuildArch:  noarch
