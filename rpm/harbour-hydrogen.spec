@@ -34,6 +34,7 @@ Short description of my Sailfish OS Application
 
 %prep
 %setup -q -n %{name}-%{version}
+%if 0%{?sailfishos_version}
 pushd hydrogen
 if [ ! -f ../release-%{version}.zip ]
 then
@@ -42,6 +43,7 @@ then
 fi
 unzip ../release-%{version}.zip
 popd
+%endif
 
 # >> setup
 # << setup
