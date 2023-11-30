@@ -9,8 +9,8 @@ Name:       harbour-hydrogen
 # << macros
 
 Summary:    hydrogen, a matrix client
-Version:    0.4.1-sfos
-Release:    1
+Version:    0.4.1
+Release:    sfos.1
 Group:      Qt/Qt
 License:    ASL 2.0
 BuildArch:  noarch
@@ -37,7 +37,7 @@ Short description of my Sailfish OS Application
 pushd hydrogen
 if [ ! -f ../release-%{version}.zip ]
 then
-  echo "Missing release-%{version}.zip
+  echo "Missing release-%{version}.zip"
   exit 1
 fi
 unzip ../release-%{version}.zip
