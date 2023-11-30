@@ -34,7 +34,10 @@ Short description of my Sailfish OS Application
 
 %prep
 %setup -q -n %{name}-%{version}
-pushd hydrogen && unzip %{SOURCE1} && popd
+pushd hydrogen
+HYDROGEN_TAG=$(git describe --tags)
+unzip ../release-$HYDROGEN_TAG.zip
+popd
 
 # >> setup
 # << setup
