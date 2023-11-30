@@ -36,6 +36,11 @@ Short description of my Sailfish OS Application
 %setup -q -n %{name}-%{version}
 pushd hydrogen
 HYDROGEN_TAG=$(git describe --tags)
+if [ ! -f ../release-$HYDROGEN_TAG.zip ]
+then
+  echo "Missing release-$HYDROGEN_TAG.zip
+  exit 1
+fi
 unzip ../release-$HYDROGEN_TAG.zip
 popd
 
