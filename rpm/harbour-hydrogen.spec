@@ -36,12 +36,12 @@ Short description of my Sailfish OS Application
 %setup -q -n %{name}-%{version}
 %if 0%{?sailfishos_version}
 pushd hydrogen
-if [ ! -f ../release-sfos%{version}-%{release}.zip ]
+if [ ! -f ../release-%{zipversion}.zip ]
 then
-  echo "Missing release-sfos%{version}-%{release}.zip"
+  echo "Missing release-%{zipversion}.zip"
   exit 1
 fi
-unzip ../release-sfos%{version}-%{release}.zip
+unzip ../release-%{zipversion}.zip
 popd
 %endif
 
