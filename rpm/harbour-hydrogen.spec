@@ -16,7 +16,7 @@ License:    ASL 2.0
 BuildArch:  noarch
 URL:        https://github.com/harbour-sailfishos/sfos-hydrogen
 Source0:    %{name}-%{version}.tar.bz2
-Source1:    release-sfos%{version}-%{release}.zip
+Source1:    release-%{zipversion}.zip
 Requires:   sailfishsilica-qt5 >= 0.10.9
 Requires:   sailfish-components-webview-qt5
 BuildRequires:  pkgconfig(sailfishapp) >= 1.0.3
@@ -35,13 +35,13 @@ Short description of my Sailfish OS Application
 %prep
 %setup -q -n %{name}-%{version}
 %if 0%{?sailfishos_version}
-pushd hydrogen
-if [ ! -f ../release-%{zipversion}.zip ]
+if [ ! -f %{SOURCE1} ]
 then
-  echo "Missing release-%{zipversion}.zip"
+  echo "Missing %{SOURCE1}"
   exit 1
 fi
-unzip ../release-%{zipversion}.zip
+pushd hydrogen
+unzip %{SOURCE1}
 popd
 %endif
 
