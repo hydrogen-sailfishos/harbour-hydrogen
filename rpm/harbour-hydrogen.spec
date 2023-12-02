@@ -14,7 +14,7 @@ Release:    1
 Group:      Qt/Qt
 License:    ASL 2.0
 BuildArch:  noarch
-URL:        https://github.com/harbour-sailfishos/sfos-hydrogen
+URL:        https://github.com/hydrogen-sailfishos/sfos-hydrogen
 Source0:    %{name}-%{version}.tar.bz2
 Source1:    release-%{zipversion}.zip
 Requires:   sailfishsilica-qt5 >= 0.10.9
