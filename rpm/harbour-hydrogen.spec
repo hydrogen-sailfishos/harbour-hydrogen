@@ -6,6 +6,7 @@
 Name:       harbour-hydrogen
 
 # >> macros
+%define zipversion sfos-0.4.1
 # << macros
 
 Summary:    hydrogen, a matrix client
