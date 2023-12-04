@@ -30,13 +30,16 @@ BuildRequires:  sailfish-svg2png
 BuildRequires:  desktop-file-utils
 
 %description
-App packaging Hydrogen matrix client in a webview + SailfishOS integration.
-Hydrogen is "A minimal Matrix chat client, focused on performance, offline functionality, and broad browser support"
+Hydrogen is "A minimal Matrix chat client, focused on performance, offline
+functionality, and broad browser support"
+
+This App packages Hydrogen matrix client in a webview + SailfishOS integration.
+
 %if 0%{?_chum}
 Title: Hydrogen
 Type: desktop-application
 Categories:
- - Media
+ - InstantMessaging
  - Network
 Custom:
   Repo: https://github.com/hydrogen-sailfishos/sfos-hydrogen
