@@ -17,7 +17,7 @@ License:    ASL 2.0
 BuildArch:  noarch
 URL:        https://github.com/hydrogen-sailfishos/sfos-hydrogen
 Source0:    %{name}-%{version}.tar.bz2
-Source1:    release-%{zipversion}.zip
+Source1:    https://github.com/hydrogen-sailfishos/hydrogen-web/releases/download/%{zipversion}/release-%{zipversion}.zip
 Requires:   sailfishsilica-qt5 >= 0.10.9
 Requires:   sailfish-components-webview-qt5
 BuildRequires:  pkgconfig(sailfishapp) >= 1.0.3
