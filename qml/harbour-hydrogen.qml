@@ -38,9 +38,13 @@ ApplicationWindow {
             }
     */
     property var coverMessages: []
+    property var oldUnreadCount: 0
     property string coverTitle: "" // e.g. qsTr("New Messages")
     onCoverTitleChanged: {
-        notifier.quickNumberedNotification( "New Messages", coverMessages.length )
+        if (oldUnreadCount < coverMessages.length) {
+            notifier.quickNumberedNotification( "New Messages", coverMessages.length )
+        }
+        oldUnreadCount = coverMessages.length
     }
 
     Python {
