@@ -62,6 +62,7 @@ WebViewFlickable {
                 break
             case "webview:notificationCount":
                 app.coverTitle = qsTr("Messages: %1").arg(data.count)
+                app.notificationCount = data.count
                 app.coverMessages = data.top5
                 break
             case "embed:linkclicked":
