@@ -38,7 +38,7 @@ ApplicationWindow {
             }
     */
     property var coverMessages: []
-    property var oldUnreadCount: 0
+    property int oldUnreadCount: 0
     property string coverTitle: "" // e.g. qsTr("New Messages")
     onCoverTitleChanged: {
         if (oldUnreadCount < coverMessages.length) {
