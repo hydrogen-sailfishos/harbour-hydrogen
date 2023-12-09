@@ -19,10 +19,14 @@ ApplicationWindow {
 
     allowedOrientations: Orientation.All
     property int notificationCount: 0
+    property int oldUnreadCount: 0
     property var openingArgument
     property bool isSettingsAvailable: true
     onNotificationCountChanged: {
-        console.log("Updated notification count")
+        if (oldUnreadCount < notificationCount && Qt.application.state !== Qt.ApplicationActive) {
+            notifier.quickNumberedNotification( "New Messages", notificationCount )
+        }
+        oldUnreadCount = notificationCount
     }
 
     HydrogenNotifier { id: notifier }
@@ -38,14 +42,7 @@ ApplicationWindow {
             }
     */
     property var coverMessages: []
-    property int oldUnreadCount: 0
     property string coverTitle: "" // e.g. qsTr("New Messages")
-    onCoverTitleChanged: {
-        if (oldUnreadCount < coverMessages.length) {
-            notifier.quickNumberedNotification( "New Messages", coverMessages.length )
-        }
-        oldUnreadCount = coverMessages.length
-    }
 
     Python {
         id: py
