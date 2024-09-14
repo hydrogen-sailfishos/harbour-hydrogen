@@ -96,7 +96,7 @@ WebViewFlickable {
 
         // disable CORS
         WebEngineSettings.setPreference(
-            "security.fileuri.strict_origin_policy", false,
+            "security.disable_cors_checks", true,
             WebEngineSettings.BoolPref)
 
         /*** User Settings ***/
