@@ -72,13 +72,13 @@ CoverBackground {
     CoverActionList {
         id: coverAction
         CoverAction {
-            iconSource: "image://theme/icom-cover-sync"
+            iconSource: "image://theme/icon-cover-sync"
         }
         CoverAction {
-            iconSource: "image://theme/icom-cover-message"
+            iconSource: "image://theme/icon-cover-message"
         }
         CoverAction {
-            iconSource: "image://theme/icom-cover-new"
+            iconSource: "image://theme/icon-cover-new"
         }
     }
 }
