@@ -1,5 +1,7 @@
 // This file is part of harbour-hydrogen
 // Copyright (c) 2023 Peter G. (nephros)
+//
+// SPDX-FileCopyrightText: 2024 Mirian Margiani
 // SPDX-License-Identifier: Apache-2.0
 
 import QtQuick 2.6
@@ -9,62 +11,68 @@ Page {
     id: root
     allowedOrientations: Orientation.All
 
-    SilicaFlickable{
+    SilicaFlickable {
         anchors.fill: parent
         contentHeight: col.height
+
         Column {
             id: col
             spacing: Theme.paddingLarge
             bottomPadding: Theme.itemSizeLarge
-            width: parent.width - Theme.horizontalPageMargin
-            PageHeader{ title:  Qt.application.name + " " + qsTr("Settings", "page title") }
+            width: parent.width
+
+            PageHeader {
+                title: qsTr("Settings", "page title")
+            }
+
             SectionHeader {
-                width: parent.width
-                anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("Notifications")
             }
-            TextSwitch{ id: notifysw
-                width: parent.width
-                anchors.horizontalCenter: parent.horizontalCenter
+
+            TextSwitch {
+                id: notifysw
                 checked: appConfig.showNotifications
-                automaticCheck: true
-                text: qsTr("Show Notifications")
-                //description: qsTr("If enabled, ... .")
-                onClicked: appConfig.showNotifications = checked
+                text: qsTr("Show notifications")
+                onClicked: appConfig.showNotifications =
+                           !appConfig.showNotifications
             }
-            TextSwitch{
+
+            TextSwitch {
                 enabled: notifysw.checked
-                width: parent.width
-                anchors.horizontalCenter: parent.horizontalCenter
                 checked: appConfig.stickyNotifications
-                automaticCheck: true
-                text: qsTr("Sticky Notifications")
-                description: qsTr("If enabled, the app will update a single notification (as opposed to sending a new one each time).")
-                onClicked: appConfig.stickyNotifications = checked
+                text: qsTr("Sticky notifications")
+                description: qsTr("If enabled, the app will update a single " +
+                                  "notification (as opposed to sending a new " +
+                                  "one each time).")
+                onClicked: appConfig.stickyNotifications =
+                           !appConfig.stickyNotifications
             }
+
             SectionHeader {
-                width: parent.width
-                anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("Web View")
             }
+
             Label {
-                width: parent.width - Theme.horizontalPageMargin
-                anchors.horizontalCenter: parent.horizontalCenter
-                //color: Theme.secondaryColor
+                width: parent.width - 2*x
+                x: Theme.horizontalPageMargin
+                color: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeSmall
                 wrapMode: Text.Wrap
-                text: qsTr("Restart the App to apply changes to any of the values below.")
+                text: qsTr("Restart the App to apply changes to any of " +
+                           "the values below.")
             }
-            ComboBox{
-                width: parent.width
-                anchors.horizontalCenter: parent.horizontalCenter
-                label: qsTr("Theme Mode")
-                description: qsTr("Whether we will follow the Ambience style, or used fixed Light or Dark mode.")
+
+            ComboBox {
+                label: qsTr("Color theme")
+                description: qsTr("This setting defines whether the app will " +
+                                  "follow the current ambience style, or always " +
+                                  "use either dark or light mode.")
                 menu: ContextMenu {
-                    MenuItem { text: qsTr("Light Mode"); }
-                    MenuItem { text: qsTr("Dark Mode"); }
-                    MenuItem { text: qsTr("Follow Ambience"); }
+                    MenuItem { text: qsTr("Light mode"); }
+                    MenuItem { text: qsTr("Dark mode"); }
+                    MenuItem { text: qsTr("Follow ambience"); }
                 }
+
                 property bool ready: false
                 onCurrentIndexChanged: {
                     if (!ready) return
@@ -76,67 +84,45 @@ Page {
                     if (wvConfig.ambienceMode) currentIndex = wvConfig.ambienceMode
                     ready = true
                 }
+            }
 
-            }
-            Label {
-                anchors {
-                    // align to slider left
-                    left: zoomSlider.left
-                    leftMargin: zoomSlider.leftMargin //+ Theme.paddingLarge
-                    right: zoomSlider.right
-                    rightMargin: zoomSlider.rightMargin //+ Theme.paddingLarge
-                    topMargin: Theme.paddingMedium
-                }
-                text: qsTr("Scale user interface")
-                width: parent.width
-                color: Theme.secondaryHighlightColor
-                wrapMode: Text.Wrap
-            }
             Slider {
                 id: zoomSlider
                 width: parent.width
-                anchors.horizontalCenter: parent.horizontalCenter
-                label: qsTr("Page Zoom factor")
+
+                label: qsTr("User interface scale factor")
                 minimumValue: 0.8
                 maximumValue: 4.3
                 stepSize: 0.2
                 value: wvConfig.zoom
-                valueText: "x" + value
-                onReleased:  { wvConfig.zoom = sliderValue }
-            }
-            Label {
-                anchors {
-                    // align to slider left
-                    left: zoomSlider.left
-                    leftMargin: zoomSlider.leftMargin //+ Theme.paddingLarge
-                    right: zoomSlider.right
-                    rightMargin: zoomSlider.rightMargin //+ Theme.paddingLarge
-                    topMargin: Theme.paddingMedium
+                valueText: value.toLocaleString(Qt.locale(), 'f', 2)
+                onReleased: {
+                    wvConfig.zoom = sliderValue
                 }
-                text: qsTr("Browser Memory")
-                width: parent.width
-                color: Theme.secondaryHighlightColor
-                wrapMode: Text.Wrap
             }
+
             Slider {
                 id: memSlider
                 width: parent.width
-                anchors.horizontalCenter: parent.horizontalCenter
-                label: qsTr("Memory Cache")
+
+                label: qsTr("Memory cache size")
                 minimumValue: 0
                 maximumValue: 11
                 stepSize: 0.5
-                value: wvConfig.memCache ? wvConfig.memCache: -1
+                value: wvConfig.memCache ? wvConfig.memCache : -1
                 valueText: {
                     if (sliderValue === 11) {
                         return qsTr("automatic")
                     } else if (sliderValue === 0) {
                         return qsTr("disabled")
                     } else {
-                        Math.round(sliderValue * 12.8) + qsTr("MB");
+                        return qsTr("%1 MB", "memory size, as in “10 megabytes”")
+                               .arg(Math.round(sliderValue * 12.8))
                     }
                 }
-                onReleased: wvConfig.memCache = Math.round(sliderValue)
+                onReleased: {
+                    wvConfig.memCache = Math.round(sliderValue)
+                }
             }
         }
     }
