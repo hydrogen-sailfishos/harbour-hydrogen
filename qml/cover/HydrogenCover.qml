@@ -50,6 +50,7 @@ CoverBackground {
         text: app.coverTitle
         color: Theme.highlightColor
         wrapMode: Text.Wrap
+        height: visible ? implicitHeight : 0
 
         width: parent.width - 2*Theme.horizontalPageMargin
         anchors {
