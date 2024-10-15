@@ -34,41 +34,87 @@ CoverBackground {
     Label {
         id: nameLabel
         text: "Hydrogen" // app name is not translated
-        x: parent.width  - (width +  Theme.paddingLarge)
-        y: parent.height - (height + Theme.paddingSmall*3)
+        anchors {
+            right: parent.right
+            rightMargin: Theme.horizontalPageMargin
+            bottom: coverActionArea.bottom
+            bottomMargin: Theme.paddingMedium
+        }
         font.pixelSize: Theme.fontSizeLarge
         color: hyHighlightColor
     }
 
     Label {
         id: titleLabel
-        visible: app.coverTitle.length > 0
+        visible: !!text
         text: app.coverTitle
-        width: parent.width - Theme.horizontalPageMargin
-        x: Theme.horizontalPageMargin
-        //y: Theme.paddingMedium
-        anchors.top: label.bottom
-        font.pixelSize: Theme.fontSizeExtraSmall
         color: Theme.highlightColor
         wrapMode: Text.Wrap
-    }
-    ColumnView { id: messageView
-        x: Theme.horizontalPageMargin
-        width: parent.width - Theme.horizontalPageMargin
-        height: parent.height - coverAction.height
-        anchors.top: titleLabel.bottom
-        anchors.horizontalCenter: parent.horizontalCenter
-        visible: app.coverMessages.length > 0
-        opacity: visible ? 1.0 : 0.4
-        Behavior on opacity { FadeAnimator { } }
 
-        itemHeight: Theme.itemSizeSmall/2
-        delegate: Label {
-            text: modelData
-            font.pixelSize: Theme.fontSizeTiny*0.8
-            wrapMode: Text.NoWrap
-            truncationMode: TruncationMode.Fade
-            width: messageView.width
+        width: parent.width - 2*Theme.horizontalPageMargin
+        anchors {
+            top: parent.top
+            topMargin: Theme.paddingMedium
+            horizontalCenter: parent.horizontalCenter
         }
+    }
+
+    ColumnView {
+        id: messageView
+        width: parent.width - 2*Theme.horizontalPageMargin
+        anchors {
+            top: titleLabel.bottom
+            topMargin: Theme.paddingMedium
+            bottom: nameLabel.top
+            bottomMargin: Theme.paddingMedium
+            horizontalCenter: parent.horizontalCenter
+        }
+
+        visible: opacity > 0.0
+        opacity: app.coverMessages.length > 0 ? 1.0 : 0.0
+        Behavior on opacity { FadeAnimator {} }
+        itemHeight: Theme.fontSizeSmall * 2
+
+        delegate: Item {
+            width: parent.width
+            height: Theme.fontSizeSmall * 2
+
+            Label {
+                id: countLabel
+                text: modelData.count
+                height: Theme.fontSizeSmall * 1.5
+                verticalAlignment: Text.AlignBottom
+                font.pixelSize: Theme.fontSizeSmall * 1.5
+                truncationMode: TruncationMode.Fade
+                color: Theme.secondaryHighlightColor
+                width: implicitWidth
+
+                anchors {
+                    left: parent.left
+                    verticalCenter: parent.verticalCenter
+                }
+            }
+
+            Label {
+                text: modelData.name
+                font.pixelSize: Theme.fontSizeSmall
+                truncationMode: TruncationMode.Fade
+                color: Theme.secondaryHighlightColor
+
+                anchors {
+                    left: countLabel.right
+                    leftMargin: Theme.paddingSmall
+                    right: parent.right
+                    baseline: countLabel.baseline
+                }
+            }
+        }
+    }
+
+    OpacityRampEffect {
+        direction: OpacityRamp.TopToBottom
+        sourceItem: messageView
+        offset: 0.6
+        slope: 1.5
     }
 }
