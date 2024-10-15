@@ -1,6 +1,8 @@
 // Copyright © 2021-2023 Thilo Kogge (thigg)
 // Copyright © 2023 The SailfishOS Hackathon Bucharest Team
 //
+// SPDX-FileCopyrightText: 2024 Mirian Margiani
+//
 // SPDX-License-Identifier: Apache-2.0
 
 import QtQuick 2.0
@@ -23,10 +25,17 @@ WebViewFlickable {
 
     quickScroll: false
     flickableDirection: Flickable.VerticalFlick
+
     PullDownMenu {
-        // Disable when in a room
-        visible: ! /\/room\/[^/]+$/.test(webview.url.toString())
-        MenuItem{
+        // Workaround for bug #42:
+        // Enable on the sessions view (that's usually not scrollable),
+        // but make sure it is disabled in the sessions list view and in
+        // all rooms.
+        visible: /\/session$/.test(webview.url.toString()) ||
+                 (!/\/room\/[^/]+$/.test(webview.url.toString()) &&
+                  !/\/session\/[^/]+$/.test(webview.url.toString()))
+
+        MenuItem {
             text: qsTr('App Settings')
             onClicked: pageStack.push(Qt.resolvedUrl("pages/AppSettingsPage.qml"))
         }
