@@ -63,7 +63,7 @@ WebViewFlickable {
             case "webview:notificationCount":
                 app.coverTitle = qsTr("Messages: %1").arg(data.count)
                 app.notificationCount = data.count
-                app.coverMessages = data.top5
+                app.coverMessages = data.mostRecent
                 break
             case "embed:linkclicked":
                 var url = '/^http:\/\/localhost/'
