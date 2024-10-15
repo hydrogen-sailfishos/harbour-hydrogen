@@ -15,7 +15,7 @@ import "components"
 
 ApplicationWindow {
     id: app
-    cover: HydrogenCover{}
+    cover: Component { HydrogenCover {} }
 
     allowedOrientations: Orientation.All
     property int notificationCount: 0
