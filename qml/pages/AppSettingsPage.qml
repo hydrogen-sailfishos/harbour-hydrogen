@@ -48,6 +48,16 @@ Page {
                            !appConfig.stickyNotifications
             }
 
+            TextSwitch {
+                checked: appConfig.showFunFacts
+                text: qsTr("Show fun facts while loading")
+                description: qsTr("If enabled, the app will show " +
+                                  "fun science facts about Hydrogen " +
+                                  "during startup.")
+                onClicked: appConfig.showFunFacts =
+                           !appConfig.showFunFacts
+            }
+
             SectionHeader {
                 text: qsTr("Web View")
             }

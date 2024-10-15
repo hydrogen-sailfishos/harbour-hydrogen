@@ -177,6 +177,7 @@ ApplicationWindow {
         path:  "app"
         property bool showNotifications: true
         property bool stickyNotifications: false
+        property bool showFunFacts: true
     }
     ConfigurationGroup  {
         id: wvConfig

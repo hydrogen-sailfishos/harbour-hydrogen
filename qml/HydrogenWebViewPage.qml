@@ -31,10 +31,17 @@ WebViewPage {
 
     BusyLabel {
         running: !hydrogenwebview.webView.loaded
-        text: Fact.get()
         onRunningChanged: {
             // break binding after first load
             if (hydrogenwebview.webView.loaded) running = false
+        }
+
+        Component.onCompleted: {
+            if (appConfig.showFunFacts) {
+                // the property must be set here, otherwise
+                // we lose the default text
+                text = Fact.get()
+            }
         }
     }
 }
