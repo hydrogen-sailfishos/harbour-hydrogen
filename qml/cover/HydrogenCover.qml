@@ -9,38 +9,39 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 CoverBackground {
-    readonly property color hyColor:               "#0dbd8b"
-    readonly property color hylightColor:          Theme.highlightFromColor(hyColor, Theme.ColorScheme)
-    //readonly property color secondaryHylightColor: Theme.secondaryHighlightFromColor(hyColor, Theme.ColorScheme)
-    //readonly property color dimmerHylightColor:    Theme.highlightDimmerFromColor(hyColor, Theme.ColorScheme)
-    readonly property color logoColor:             Theme.rgba(hyColor, Theme.OpacityFaint)
+    readonly property color hyColor: "#0dbd8b"
+    readonly property color hyHighlightColor: Theme.highlightFromColor(hyColor, Theme.colorScheme)
 
     Connections {
         target: app
         onCoverMessagesChanged: messageView.model = app.coverMessages
     }
-    Icon {
+
+    HighlightImage {
+        id: background
         z: -1
-        source: Qt.resolvedUrl("./hydrogen.svg" + "?" + logoColor)
-        anchors.horizontalCenter: parent.left
-        anchors.verticalCenter: parent.bottom
-        height: visible ? parent.height : 0
+        source: Qt.resolvedUrl("./hydrogen.svg")
+        anchors {
+            horizontalCenter: parent.left
+            verticalCenter: parent.bottom
+        }
+        height: parent.height
         fillMode: Image.PreserveAspectFit
-        opacity: visible ? 0.2 : 0.0
-        Behavior on opacity { FadeAnimator { duration: 1200 } }
-        //Behavior on height  { PropertyAnimation { duration: 1200 ; easing.type: Easing.InBounce } }
+        opacity: 0.15
+        color: hyHighlightColor
     }
+
     Label {
         id: nameLabel
-        text: qsTr("Hydrogen")
-        x: (parent.width  - (width +  Theme.paddingLarge))
-        y: visible ? (parent.height - (height + Theme.paddingSmall*3)) : parent.height + height
+        text: "Hydrogen" // app name is not translated
+        x: parent.width  - (width +  Theme.paddingLarge)
+        y: parent.height - (height + Theme.paddingSmall*3)
         font.pixelSize: Theme.fontSizeLarge
-        color:   visible ? Theme.secondaryColor : hylightColor
-        Behavior on color { ColorAnimation { duration: 2400 } }
-        Behavior on y { PropertyAnimation { duration: 2400 } }
+        color: hyHighlightColor
     }
-    Label { id: titleLabel
+
+    Label {
+        id: titleLabel
         visible: app.coverTitle.length > 0
         text: app.coverTitle
         width: parent.width - Theme.horizontalPageMargin
