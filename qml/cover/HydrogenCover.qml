@@ -68,17 +68,4 @@ CoverBackground {
             width: messageView.width
         }
     }
-
-    CoverActionList {
-        id: coverAction
-        CoverAction {
-            iconSource: "image://theme/icon-cover-sync"
-        }
-        CoverAction {
-            iconSource: "image://theme/icon-cover-message"
-        }
-        CoverAction {
-            iconSource: "image://theme/icon-cover-new"
-        }
-    }
 }
