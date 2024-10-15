@@ -61,7 +61,7 @@ WebViewFlickable {
                 console.log("webapp-log: " + JSON.stringify(data))
                 break
             case "webview:notificationCount":
-                app.coverTitle = qsTr("Messages")
+                app.coverTitle = ""
                 app.notificationCount = data.count
                 app.coverMessages = data.coverPreview
                 break
