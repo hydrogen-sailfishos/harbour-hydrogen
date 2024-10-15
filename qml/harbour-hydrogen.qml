@@ -31,15 +31,17 @@ ApplicationWindow {
 
     HydrogenNotifier { id: notifier }
 
-    /* array of string.
-       Use it something like below.
-       Note that you can't usefully push() and pop() QML var type arrays.
+    /* Array of objects: {name: "Name", count: 5}
 
-            addMessage(message) {
-                var msgs = coverMessages
-                msgs.splice (message)
-                coverMessage = msgs
-            }
+       These messages will be shown on the cover with an optional
+       title. Note that push() and pop() will not update the cover.
+       You must reassign the property to trigger coverMessagesChanged signals.
+
+       This does the trick:
+         coverMessages.push(message)
+         coverMessages = coverMessages
+
+       Note: the title should stay empty if the messages are self-explanatory.
     */
     property var coverMessages: []
     property string coverTitle: "" // e.g. qsTr("New Messages")
