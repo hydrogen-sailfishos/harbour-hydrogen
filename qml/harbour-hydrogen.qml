@@ -1,6 +1,8 @@
 // Copyright © 2021-2023 Thilo Kogge (thigg)
 // Copyright © 2023 The SailfishOS Hackathon Bucharest Team
 //
+// SPDX-FileCopyrightText: 2024 Mirian Margiani
+//
 // SPDX-License-Identifier: Apache-2.0
 
 import QtQuick 2.0
