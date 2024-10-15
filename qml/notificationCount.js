@@ -34,16 +34,20 @@ function refreshSession() {
         };
         request.onsuccess = function(event) {
           var notificationCount = request.result.reduce((sum, item) => sum + item.notificationCount, 0);
-          // Most recent 10 discussions with unread:
-          let mostRecent = request.result.filter(item => !!item.notificationCount)
+
+          // Most recent bunch of discussions with unread
+          let mostRecentCount = 20;
+          let coverPreview = request.result.filter(item => !!item.notificationCount)
                 .sort((x,y) => x.lastMessageTimestamp - y.lastMessageTimestamp)
-                .slice(-10).map(item => item.name || item.heroes[0])
-                .reverse();
+                .slice(-mostRecentCount).map(item => ({
+                    name: item.name || item.heroes[0],
+                    count: item.notificationCount,
+                })).reverse();
 
           var customEvent = new CustomEvent("framescript:notificationCount", {
               detail: {
                   count: notificationCount,
-                  mostRecent: mostRecent
+                  coverPreview: coverPreview,
               }
           });
           document.dispatchEvent(customEvent);
