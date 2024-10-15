@@ -1,4 +1,5 @@
-import QtQuick 2.2      // not 2.0, because Instantiator
+import QtQuick 2.2  // not 2.0, because Instantiator
+import QtQml 2.2  // for Instantiator
 import Sailfish.Silica 1.0
 import Nemo.Notifications 1.0
 
