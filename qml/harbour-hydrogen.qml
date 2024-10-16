@@ -14,7 +14,6 @@ import Nemo.Configuration 1.0
 import Nemo.Notifications 1.0
 import io.thp.pyotherside 1.5
 import "cover"
-import "components"
 
 ApplicationWindow {
     id: app
@@ -31,6 +30,7 @@ ApplicationWindow {
             var tryToBeSilent = Qt.application.state == Qt.ApplicationActive;
             var message = notificationComponent.createObject(null, {
                 'previewSummary': tryToBeSilent ? null: qsTr("New hydrogen message."),
+                'isTransient': !appConfig.stickyNotifications,
                 'urgency': tryToBeSilent ? Notification.Low : Notification.Normal,
                 'itemCount': notificationCount,
                 'replacesId': appConfig.lastNotificationId
@@ -175,7 +175,6 @@ ApplicationWindow {
     Component {
         id: notificationComponent;
         Notification {
-            isTransient: false
             appName: "Hydrogen"
             appIcon: "image://theme/harbour-hydrogen"
             summary: qsTr("New messages")
@@ -199,7 +198,6 @@ ApplicationWindow {
                      "iface":    dbuslistener.iface,
                      "method":   "activate",
                  }]
-
         }
     }
 
