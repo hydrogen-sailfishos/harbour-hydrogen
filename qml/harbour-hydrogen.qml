@@ -1,6 +1,8 @@
 // Copyright © 2021-2023 Thilo Kogge (thigg)
 // Copyright © 2023 The SailfishOS Hackathon Bucharest Team
 //
+// SPDX-FileCopyrightText: 2024 Mirian Margiani
+//
 // SPDX-License-Identifier: Apache-2.0
 
 import QtQuick 2.0
@@ -15,7 +17,7 @@ import "components"
 
 ApplicationWindow {
     id: app
-    cover: HydrogenCover{}
+    cover: Component { HydrogenCover {} }
 
     allowedOrientations: Orientation.All
     property int notificationCount: 0
@@ -31,15 +33,17 @@ ApplicationWindow {
 
     HydrogenNotifier { id: notifier }
 
-    /* array of string.
-       Use it something like below.
-       Note that you can't usefully push() and pop() QML var type arrays.
+    /* Array of objects: {name: "Name", count: 5}
 
-            addMessage(message) {
-                var msgs = coverMessages
-                msgs.splice (message)
-                coverMessage = msgs
-            }
+       These messages will be shown on the cover with an optional
+       title. Note that push() and pop() will not update the cover.
+       You must reassign the property to trigger coverMessagesChanged signals.
+
+       This does the trick:
+         coverMessages.push(message)
+         coverMessages = coverMessages
+
+       Note: the title should stay empty if the messages are self-explanatory.
     */
     property var coverMessages: []
     property string coverTitle: "" // e.g. qsTr("New Messages")
@@ -173,6 +177,7 @@ ApplicationWindow {
         path:  "app"
         property bool showNotifications: true
         property bool stickyNotifications: false
+        property bool showFunFacts: true
     }
     ConfigurationGroup  {
         id: wvConfig

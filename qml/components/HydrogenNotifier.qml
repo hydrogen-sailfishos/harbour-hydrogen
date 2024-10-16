@@ -1,4 +1,5 @@
-import QtQuick 2.2      // not 2.0, because Instantiator
+import QtQuick 2.2  // not 2.0, because Instantiator
+import QtQml 2.2  // for Instantiator
 import Sailfish.Silica 1.0
 import Nemo.Notifications 1.0
 
@@ -154,7 +155,7 @@ Item { id: root
     Component { id: template; Notification {
          property string internalId
          category: "im.received"
-         appName: qsTr("Hydrogen")
+         appName: "Hydrogen"  // app name is not translated
          appIcon: "image://theme/harbour-hydrogen"
          //summary: "Notification summary"
          //body: "Notification body"

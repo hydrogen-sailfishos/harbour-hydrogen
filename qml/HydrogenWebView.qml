@@ -1,6 +1,8 @@
 // Copyright © 2021-2023 Thilo Kogge (thigg)
 // Copyright © 2023 The SailfishOS Hackathon Bucharest Team
 //
+// SPDX-FileCopyrightText: 2024 Mirian Margiani
+//
 // SPDX-License-Identifier: Apache-2.0
 
 import QtQuick 2.0
@@ -23,14 +25,22 @@ WebViewFlickable {
 
     quickScroll: false
     flickableDirection: Flickable.VerticalFlick
+
     PullDownMenu {
-        // Disable when in a room
-        visible: ! /\/room\/[^/]+$/.test(webview.url.toString())
-        MenuItem{
+        // Workaround for bug #42:
+        // Enable on the sessions view (that's usually not scrollable),
+        // but make sure it is disabled in the sessions list view and in
+        // all rooms.
+        visible: /\/session$/.test(webview.url.toString()) ||
+                 (!/\/room\/[^/]+$/.test(webview.url.toString()) &&
+                  !/\/session\/[^/]+$/.test(webview.url.toString()))
+
+        MenuItem {
             text: qsTr('App Settings')
             onClicked: pageStack.push(Qt.resolvedUrl("pages/AppSettingsPage.qml"))
         }
-        MenuItem{
+        MenuItem {
+            visible: enabled
             enabled: app.isSettingsAvailable
             text: qsTr('Hydrogen Settings')
             onClicked: enterSettingsView()
@@ -61,9 +71,9 @@ WebViewFlickable {
                 console.log("webapp-log: " + JSON.stringify(data))
                 break
             case "webview:notificationCount":
-                app.coverTitle = qsTr("Messages: %1").arg(data.count)
+                app.coverTitle = ""
                 app.notificationCount = data.count
-                app.coverMessages = data.top5
+                app.coverMessages = data.coverPreview
                 break
             case "embed:linkclicked":
                 var url = '/^http:\/\/localhost/'

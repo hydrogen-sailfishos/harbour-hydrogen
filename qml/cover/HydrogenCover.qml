@@ -1,84 +1,121 @@
 // Copyright © 2021-2023 Thilo Kogge (thigg)
 // Copyright © 2023 The SailfishOS Hackathon Bucharest Team
 //
+// SPDX-FileCopyrightText: 2024 Mirian Margiani
+//
 // SPDX-License-Identifier: Apache-2.0
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 CoverBackground {
-    readonly property color hyColor:               "#0dbd8b"
-    readonly property color hylightColor:          Theme.highlightFromColor(hyColor, Theme.ColorScheme)
-    //readonly property color secondaryHylightColor: Theme.secondaryHighlightFromColor(hyColor, Theme.ColorScheme)
-    //readonly property color dimmerHylightColor:    Theme.highlightDimmerFromColor(hyColor, Theme.ColorScheme)
-    readonly property color logoColor:             Theme.rgba(hyColor, Theme.OpacityFaint)
+    readonly property color hyColor: "#0dbd8b"
+    readonly property color hyHighlightColor: Theme.highlightFromColor(hyColor, Theme.colorScheme)
 
     Connections {
         target: app
         onCoverMessagesChanged: messageView.model = app.coverMessages
     }
-    Icon {
+
+    HighlightImage {
+        id: background
         z: -1
-        source: Qt.resolvedUrl("./hydrogen.svg" + "?" + logoColor)
-        anchors.horizontalCenter: parent.left
-        anchors.verticalCenter: parent.bottom
-        height: visible ? parent.height : 0
+        source: Qt.resolvedUrl("./hydrogen.svg")
+        anchors {
+            horizontalCenter: parent.left
+            verticalCenter: parent.bottom
+        }
+        height: parent.height
         fillMode: Image.PreserveAspectFit
-        opacity: visible ? 0.2 : 0.0
-        Behavior on opacity { FadeAnimator { duration: 1200 } }
-        //Behavior on height  { PropertyAnimation { duration: 1200 ; easing.type: Easing.InBounce } }
+        opacity: 0.15
+        color: hyHighlightColor
     }
+
     Label {
         id: nameLabel
-        text: qsTr("Hydrogen")
-        x: (parent.width  - (width +  Theme.paddingLarge))
-        y: visible ? (parent.height - (height + Theme.paddingSmall*3)) : parent.height + height
+        text: "Hydrogen" // app name is not translated
+        anchors {
+            right: parent.right
+            rightMargin: Theme.horizontalPageMargin
+            bottom: coverActionArea.bottom
+            bottomMargin: Theme.paddingMedium
+        }
         font.pixelSize: Theme.fontSizeLarge
-        color:   visible ? Theme.secondaryColor : hylightColor
-        Behavior on color { ColorAnimation { duration: 2400 } }
-        Behavior on y { PropertyAnimation { duration: 2400 } }
+        color: hyHighlightColor
     }
-    Label { id: titleLabel
-        visible: app.coverTitle.length > 0
+
+    Label {
+        id: titleLabel
+        visible: !!text
         text: app.coverTitle
-        width: parent.width - Theme.horizontalPageMargin
-        x: Theme.horizontalPageMargin
-        //y: Theme.paddingMedium
-        anchors.top: label.bottom
-        font.pixelSize: Theme.fontSizeExtraSmall
         color: Theme.highlightColor
         wrapMode: Text.Wrap
-    }
-    ColumnView { id: messageView
-        x: Theme.horizontalPageMargin
-        width: parent.width - Theme.horizontalPageMargin
-        height: parent.height - coverAction.height
-        anchors.top: titleLabel.bottom
-        anchors.horizontalCenter: parent.horizontalCenter
-        visible: app.coverMessages.length > 0
-        opacity: visible ? 1.0 : 0.4
-        Behavior on opacity { FadeAnimator { } }
+        height: visible ? implicitHeight : 0
 
-        itemHeight: Theme.itemSizeSmall/2
-        delegate: Label {
-            text: modelData
-            font.pixelSize: Theme.fontSizeTiny*0.8
-            wrapMode: Text.NoWrap
-            truncationMode: TruncationMode.Fade
-            width: messageView.width
+        width: parent.width - 2*Theme.horizontalPageMargin
+        anchors {
+            top: parent.top
+            topMargin: Theme.paddingMedium
+            horizontalCenter: parent.horizontalCenter
         }
     }
 
-    CoverActionList {
-        id: coverAction
-        CoverAction {
-            iconSource: "image://theme/icom-cover-sync"
+    ColumnView {
+        id: messageView
+        width: parent.width - 2*Theme.horizontalPageMargin
+        anchors {
+            top: titleLabel.bottom
+            topMargin: Theme.paddingMedium
+            bottom: nameLabel.top
+            bottomMargin: Theme.paddingMedium
+            horizontalCenter: parent.horizontalCenter
         }
-        CoverAction {
-            iconSource: "image://theme/icom-cover-message"
+
+        visible: opacity > 0.0
+        opacity: app.coverMessages.length > 0 ? 1.0 : 0.0
+        Behavior on opacity { FadeAnimator {} }
+        itemHeight: Theme.fontSizeSmall * 2
+
+        delegate: Item {
+            width: parent.width
+            height: Theme.fontSizeSmall * 2
+
+            Label {
+                id: countLabel
+                text: modelData.count
+                height: Theme.fontSizeSmall * 1.5
+                verticalAlignment: Text.AlignBottom
+                font.pixelSize: Theme.fontSizeSmall * 1.5
+                truncationMode: TruncationMode.Fade
+                color: Theme.secondaryHighlightColor
+                width: implicitWidth
+
+                anchors {
+                    left: parent.left
+                    verticalCenter: parent.verticalCenter
+                }
+            }
+
+            Label {
+                text: modelData.name
+                font.pixelSize: Theme.fontSizeSmall
+                truncationMode: TruncationMode.Fade
+                color: Theme.secondaryHighlightColor
+
+                anchors {
+                    left: countLabel.right
+                    leftMargin: Theme.paddingSmall
+                    right: parent.right
+                    baseline: countLabel.baseline
+                }
+            }
         }
-        CoverAction {
-            iconSource: "image://theme/icom-cover-new"
-        }
+    }
+
+    OpacityRampEffect {
+        direction: OpacityRamp.TopToBottom
+        sourceItem: messageView
+        offset: 0.6
+        slope: 1.5
     }
 }
