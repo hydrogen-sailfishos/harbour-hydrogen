@@ -11,6 +11,7 @@ import Sailfish.WebView 1.0
 import Sailfish.WebEngine 1.0
 import Nemo.DBus 2.0
 import Nemo.Configuration 1.0
+import Nemo.Notifications 1.0
 import io.thp.pyotherside 1.5
 import "cover"
 import "components"
@@ -20,18 +21,25 @@ ApplicationWindow {
     cover: Component { HydrogenCover {} }
 
     allowedOrientations: Orientation.All
-    property int notificationCount: 0
-    property int oldUnreadCount: 0
     property var openingArgument
     property bool isSettingsAvailable: true
+
+    property int notificationCount: 0
+    property int oldUnreadCount: 0
     onNotificationCountChanged: {
-        if (oldUnreadCount < notificationCount && Qt.application.state !== Qt.ApplicationActive) {
-            notifier.quickNumberedNotification( "New Messages", notificationCount )
+        if (oldUnreadCount < notificationCount && appConfig.showNotifications) {
+            var tryToBeSilent = Qt.application.state == Qt.ApplicationActive;
+            var message = notificationComponent.createObject(null, {
+                'previewSummary': tryToBeSilent ? null: qsTr("New hydrogen message."),
+                'urgency': tryToBeSilent ? Notification.Low : Notification.Normal,
+                'itemCount': notificationCount,
+                'replacesId': appConfig.lastNotificationId
+            })
+            message.publish()
+            appConfig.lastNotificationId = message.replacesId
         }
         oldUnreadCount = notificationCount
     }
-
-    HydrogenNotifier { id: notifier }
 
     /* Array of objects: {name: "Name", count: 5}
 
@@ -164,6 +172,37 @@ ApplicationWindow {
         }
     }
 
+    Component {
+        id: notificationComponent;
+        Notification {
+            isTransient: false
+            appName: "Hydrogen"
+            appIcon: "image://theme/harbour-hydrogen"
+            summary: qsTr("New messages")
+            category: "im.received"
+            remoteActions: [
+                {
+                     // invoked when the user clicks the notification item
+                     "name":     "default",
+                     "displayName": qsTr("Open Conversation"),
+                     "icon":     "icon-lock-chat",
+                     "service":  dbuslistener.service,
+                     "path":     dbuslistener.path,
+                     "iface":    dbuslistener.iface,
+                     "method":   "fromNotification"
+                 },
+                 {
+                     // invoked when the user clicks the app notification group
+                     "name": "app",
+                     "service":  dbuslistener.service,
+                     "path":     dbuslistener.path,
+                     "iface":    dbuslistener.iface,
+                     "method":   "activate",
+                 }]
+
+        }
+    }
+
     // application settings:
     property alias appConfig: appConfig
     property alias wvConfig:  wvConfig
@@ -178,6 +217,7 @@ ApplicationWindow {
         property bool showNotifications: true
         property bool stickyNotifications: false
         property bool showFunFacts: true
+        property int lastNotificationId: 42
     }
     ConfigurationGroup  {
         id: wvConfig
