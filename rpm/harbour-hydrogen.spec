@@ -11,7 +11,7 @@ Name:       harbour-hydrogen
 
 Summary:    hydrogen, a matrix client
 Version:    0.4.1
-Release:    1
+Release:    2
 Group:      Qt/Qt
 License:    ASL 2.0
 BuildArch:  noarch
