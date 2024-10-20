@@ -41,9 +41,9 @@ Page {
                 enabled: notifysw.checked
                 checked: appConfig.stickyNotifications
                 text: qsTr("Sticky notifications")
-                description: qsTr("If enabled, the app will update a single " +
-                                  "notification (as opposed to sending a new " +
-                                  "one each time).")
+                description: qsTr("If enabled, when the app has a notification " +
+                                  "it will also be present in the events view. " +
+                                  "Otherwise it is transient.")
                 onClicked: appConfig.stickyNotifications =
                            !appConfig.stickyNotifications
             }
