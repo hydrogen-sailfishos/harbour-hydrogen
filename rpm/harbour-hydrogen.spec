@@ -6,18 +6,18 @@
 Name:       harbour-hydrogen
 
 # >> macros
-%define zipversion sfos-0.4.1
+%define zipversion 0.5.1
 # << macros
 
 Summary:    hydrogen, a matrix client
-Version:    0.4.1
-Release:    2
+Version:    0.5
+Release:    1
 Group:      Qt/Qt
 License:    ASL 2.0
 BuildArch:  noarch
 URL:        https://github.com/hydrogen-sailfishos/sfos-hydrogen
 Source0:    %{name}-%{version}.tar.bz2
-Source1:    https://github.com/hydrogen-sailfishos/hydrogen-web/releases/download/%{zipversion}/release-%{zipversion}.zip
+Source1:    https://github.com/element-hq/hydrogen-web/releases/download/v0.5.1/hydrogen-web-%{zipversion}.tar.gz
 Requires:   sailfishsilica-qt5 >= 0.10.9
 Requires:   libsailfishapp-launcher
 Requires:   sailfish-components-webview-qt5
@@ -60,7 +60,7 @@ then
   exit 1
 fi
 pushd hydrogen
-unzip %{SOURCE1}
+tar -xvzf %{SOURCE1}
 popd
 %endif
 
