@@ -10,12 +10,12 @@ Name:       harbour-hydrogen
 # << macros
 
 Summary:    hydrogen, a matrix client
-Version:    0.5
+Version:    0.5.0
 Release:    1
 Group:      Qt/Qt
 License:    ASL 2.0
 BuildArch:  noarch
-URL:        https://github.com/hydrogen-sailfishos/sfos-hydrogen
+URL:        https://github.com/hydrogen-sailfishos/harbour-hydrogen
 Source0:    %{name}-%{version}.tar.bz2
 Source1:    https://github.com/element-hq/hydrogen-web/releases/download/v0.5.1/hydrogen-web-%{zipversion}.tar.gz
 Requires:   sailfishsilica-qt5 >= 0.10.9
@@ -43,11 +43,11 @@ Categories:
  - InstantMessaging
  - Network
 Custom:
-  Repo: https://github.com/hydrogen-sailfishos/sfos-hydrogen
-PackageIcon: https://raw.githubusercontent.com/hydrogen-sailfishos/sfos-hydrogen/hackathon/icons/svgs/harbour-hydrogen.svg
+  Repo: https://github.com/hydrogen-sailfishos/harbour-hydrogen
+PackageIcon: https://raw.githubusercontent.com/hydrogen-sailfishos/harbour-hydrogen/hackathon/icons/svgs/harbour-hydrogen.svg
 Links:
-  Homepage: https://github.com/hydrogen-sailfishos/sfos-hydrogen
-  Bugtracker: https://github.com/hydrogen-sailfishos/sfos-hydrogen/issues
+  Homepage: https://github.com/hydrogen-sailfishos/harbour-hydrogen
+  Bugtracker: https://github.com/hydrogen-sailfishos/harbour-hydrogen/issues
   Hackathon: https://github.com/orgs/hydrogen-sailfishos/projects/1/
 %endif
 
