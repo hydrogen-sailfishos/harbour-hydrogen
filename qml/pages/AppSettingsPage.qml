@@ -23,6 +23,7 @@ Page {
 
             PageHeader {
                 title: qsTr("Settings", "page title")
+                description: "harbour-hydrogen unreleased"
             }
 
             SectionHeader {

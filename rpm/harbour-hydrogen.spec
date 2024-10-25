@@ -54,14 +54,14 @@ Links:
 %prep
 %setup -q -n %{name}-%{version}
 %if 0%{?sailfishos_version}
+sed -i "s/unreleased/%{version}/" qml/pages/AppSettingsPage.qml
 if [ ! -f %{SOURCE1} ]
 then
   echo "Missing %{SOURCE1}"
   exit 1
 fi
-pushd hydrogen
-tar -xvzf %{SOURCE1}
-popd
+mkdir -p hydrogen/target # supports building locally
+tar -C hydrogen/target -xvzf %{SOURCE1}
 %endif
 
 # >> setup
