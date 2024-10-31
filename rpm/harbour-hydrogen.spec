@@ -54,14 +54,21 @@ Links:
 %prep
 %setup -q -n %{name}-%{version}
 %if 0%{?sailfishos_version}
+# add release version to QML app
 sed -i "s/unreleased/%{version}/" qml/pages/AppSettingsPage.qml
 if [ ! -f %{SOURCE1} ]
 then
   echo "Missing %{SOURCE1}"
   exit 1
 fi
-mkdir -p hydrogen/target # supports building locally
+# we use hydrogen/target because locally fetching hydrogen-web in that folder builds it there
+mkdir -p hydrogen/target
+
+# but this is the pre-built web app from github
 tar -C hydrogen/target -xvzf %{SOURCE1}
+
+# create config from sample
+mv hydrogen/target/config.sample.json hydrogen/target/config.json
 %endif
 
 # >> setup
