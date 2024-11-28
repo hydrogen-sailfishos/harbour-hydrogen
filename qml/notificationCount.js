@@ -15,7 +15,7 @@ function _calculateRoomName(summaryData, members) {
         if (sortedMembers.length > 1) {
             const lastMember = sortedMembers[sortedMembers.length - 1];
             const firstMembers = sortedMembers.slice(0, sortedMembers.length - 1);
-            return firstMembers.map(m => m.displayName).join(", ") + " and " + lastMember.displayName;
+            return firstMembers.map(m => m.displayName).join(", ") + " , and " + lastMember.displayName;
         } else {
             const otherMember = sortedMembers[0];
             if (otherMember) {
@@ -25,7 +25,7 @@ function _calculateRoomName(summaryData, members) {
             }
         }
     } else if (sortedMembers.length < countWithoutMe) {
-        return sortedMembers.map(m => m.displayName).join(", ") + ` and ${countWithoutMe} others`;
+        return sortedMembers.map(m => m.displayName).join(", ") + ` , and ${countWithoutMe} others`;
     } else {
         // Empty Room
         return null;
