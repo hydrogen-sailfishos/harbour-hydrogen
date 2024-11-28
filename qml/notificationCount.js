@@ -49,27 +49,43 @@ function refreshSession() {
     result.onsuccess = function(event) {
         var db = event.target.result;
 
-        _accessObjectStore(db, "roomSummary", function(request, event){
+        _accessObjectStore(db, "roomSummary", function(summaryRequest, event){
             console.error(event);
-        }, function(request, event) {
-            var notificationCount = request.result.reduce((sum, item) => sum + item.notificationCount, 0);
+        }, function(summaryRequest, event) {
+            _accessObjectStore(db, "roomMembers", function(membersRequest, event){
+                console.error(event);
+            }, function(membersRequest, event){
+                var notificationCount = summaryRequest.result.reduce((sum, item) => sum + item.notificationCount, 0);
 
-            // Most recent bunch of discussions with unread
-            let mostRecentCount = 20;
-            let coverPreview = request.result.filter(item => !!item.notificationCount)
+                // Most recent bunch of discussions with unread
+                let mostRecentCount = 20;
+                let coverPreviewRaw = summaryRequest.result
+                    .filter(item => !!item.notificationCount)
                     .sort((x,y) => x.lastMessageTimestamp - y.lastMessageTimestamp)
-                    .slice(-mostRecentCount).map(item => ({
-                        name: item.name || item.heroes[0],
-                        count: item.notificationCount,
-                    })).reverse();
+                    .slice(-mostRecentCount);
 
-            var customEvent = new CustomEvent("framescript:notificationCount", {
-                detail: {
-                    count: notificationCount,
-                    coverPreview: coverPreview,
-                }
+                let unnamedRooms = coverPreviewRaw
+                    .filter(item => !item.name)
+                    .map(item => item.roomId);
+                let roomNames = membersRequest.result
+                    .filter(item => (unnamedRooms.indexOf(item.roomId) >= 0))
+                    .reduce((o, item) => Object.assign(o, {[item.roomId + "|" + item.userId]: item.displayName}), {});
+
+                let coverPreview = coverPreviewRaw
+                    .map(item => ({
+                        name: item.name || roomNames[item.roomId + "|" + item.heroes[0]] || item.heroes[0],
+                        count: item.notificationCount,
+                    }))
+                    .reverse();
+
+                var customEvent = new CustomEvent("framescript:notificationCount", {
+                    detail: {
+                        count: notificationCount,
+                        coverPreview: coverPreview,
+                    }
+                });
+                document.dispatchEvent(customEvent);
             });
-            document.dispatchEvent(customEvent);
         });
     }
 }
