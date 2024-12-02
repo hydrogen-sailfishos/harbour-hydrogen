@@ -23,6 +23,9 @@ Page {
 
             PageHeader {
                 title: qsTr("Settings", "page title")
+
+                // The version number must be updated manually when a new version is released!
+                description: qsTr("Version %1", "app version").arg("0.4.2")
             }
 
             SectionHeader {
