@@ -68,7 +68,10 @@ mkdir -p hydrogen/target
 tar -C hydrogen/target -xvzf %{SOURCE1}
 
 # create config from sample
-mv hydrogen/target/config.sample.json hydrogen/target/config.json
+if [ ! -f hydrogen/target/config.json ]
+then
+    mv hydrogen/target/config.sample.json hydrogen/target/config.json
+fi
 %endif
 
 # >> setup
