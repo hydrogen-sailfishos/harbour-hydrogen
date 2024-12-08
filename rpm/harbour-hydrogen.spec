@@ -6,18 +6,18 @@
 Name:       harbour-hydrogen
 
 # >> macros
-%define zipversion sfos-0.4.1
+%define zipversion sfos-v0.5.1
 # << macros
 
 Summary:    hydrogen, a matrix client
-Version:    0.4.1
-Release:    2
+Version:    0.5.1
+Release:    1
 Group:      Qt/Qt
 License:    ASL 2.0
 BuildArch:  noarch
-URL:        https://github.com/hydrogen-sailfishos/sfos-hydrogen
+URL:        https://github.com/hydrogen-sailfishos/harbour-hydrogen
 Source0:    %{name}-%{version}.tar.bz2
-Source1:    https://github.com/hydrogen-sailfishos/hydrogen-web/releases/download/%{zipversion}/release-%{zipversion}.zip
+Source1:    https://github.com/hydrogen-sailfishos/hydrogen-web/releases/download/%{zipversion}/hydrogen-web-%{zipversion}.tar.gz
 Requires:   sailfishsilica-qt5 >= 0.10.9
 Requires:   libsailfishapp-launcher
 Requires:   sailfish-components-webview-qt5
@@ -43,25 +43,35 @@ Categories:
  - InstantMessaging
  - Network
 Custom:
-  Repo: https://github.com/hydrogen-sailfishos/sfos-hydrogen
-PackageIcon: https://raw.githubusercontent.com/hydrogen-sailfishos/sfos-hydrogen/hackathon/icons/svgs/harbour-hydrogen.svg
+  Repo: https://github.com/hydrogen-sailfishos/harbour-hydrogen
+PackageIcon: https://raw.githubusercontent.com/hydrogen-sailfishos/harbour-hydrogen/hackathon/icons/svgs/harbour-hydrogen.svg
 Links:
-  Homepage: https://github.com/hydrogen-sailfishos/sfos-hydrogen
-  Bugtracker: https://github.com/hydrogen-sailfishos/sfos-hydrogen/issues
+  Homepage: https://github.com/hydrogen-sailfishos/harbour-hydrogen
+  Bugtracker: https://github.com/hydrogen-sailfishos/harbour-hydrogen/issues
   Hackathon: https://github.com/orgs/hydrogen-sailfishos/projects/1/
 %endif
 
 %prep
 %setup -q -n %{name}-%{version}
 %if 0%{?sailfishos_version}
+# add release version to QML app
+sed -i "s/unreleased/%{version}/" qml/pages/AppSettingsPage.qml
 if [ ! -f %{SOURCE1} ]
 then
   echo "Missing %{SOURCE1}"
   exit 1
 fi
-pushd hydrogen
-unzip %{SOURCE1}
-popd
+# we use hydrogen/target because locally fetching hydrogen-web in that folder builds it there
+mkdir -p hydrogen/target
+
+# but this is the pre-built web app from github
+tar -C hydrogen/target -xvzf %{SOURCE1}
+
+# create config from sample
+if [ ! -f hydrogen/target/config.json ]
+then
+    mv hydrogen/target/config.sample.json hydrogen/target/config.json
+fi
 %endif
 
 # >> setup

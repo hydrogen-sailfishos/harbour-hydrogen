@@ -82,7 +82,7 @@ ApplicationWindow {
     function cleanInvitation(link) {
         if (link) {
             var invit_raw = link.toString().split('#/')[1]
-            return encodeURIComponent(invit_raw.split('?')[0])
+            return invit_raw.split('?')[0]
         }
     }
 
